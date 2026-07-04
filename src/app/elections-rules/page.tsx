@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function ElectionsRules() {
   return (
-    <section className="content-padding">
+    <>
       <div className="container">
         <div className="manifesto-header text-center">
           <h1>Elections & <span className="animated-accent">Nominations Rules</span></h1>
@@ -71,7 +71,7 @@ export default function ElectionsRules() {
                 <section className="mt-8">
                   <h2 className="text-2xl font-semibold mb-4">PART I</h2>
                   <h3 className="text-xl font-medium mb-2">Rule 1 – Preamble</h3>
-                  <p>The Social Democratic Party of Kenya ("the party") is a nationwide Party whose overall objective is to unite the people of Kenya and build a modern welfare society based on political, social and economic democracy...</p>
+                  <p>The Social Democratic Party of Kenya (&quot;the party&quot;) is a nationwide Party whose overall objective is to unite the people of Kenya and build a modern welfare society based on political, social and economic democracy...</p>
                   <h3 className="text-xl font-medium mb-2">Rule 2 – General Principles</h3>
                   <p>The nomination of candidates and election of officials of the Party and nomination of candidates for national elections shall be guided by the following principles:</p>
                   <ul className="list-disc pl-6 mb-4">
@@ -108,7 +108,7 @@ export default function ElectionsRules() {
                   <p>Conducted by National Congress, quorum, voting method, preparation, assumption of office, custody of materials.</p>
                   <h3 className="text-xl font-medium mb-2">Rule 12 – Party Elections (Branch Organization)</h3>
                   <p>Structure of Central Party, Branch, Sub‑Branch, Ward, Cell, and the women’s and youth leagues.</p>
-                  <h3 className="text-2xl font-semibold mb-4">PART III – The Nomination of Party Candidates</h2>
+                  <h3 className="text-2xl font-semibold mb-4">PART III – The Nomination of Party Candidates</h3>
                   <h3 className="text-xl font-medium mb-2">Rule 15 – Categories of Elections Covered</h3>
                   <p>Applies to Presidential, Senate, Governors, National Assembly, County Assembly, and County Women Representative nominations.</p>
                   <h3 className="text-xl font-medium mb-2">Rule 16 – Announcement of Vacant Positions</h3>
@@ -155,6 +155,6 @@ export default function ElectionsRules() {
           </div>
         </div>
       </div>
-    </section>
+    </>
   );
 }
