@@ -1,44 +1,56 @@
-import fs from 'fs';
-import path from 'path';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
+import { Database } from '@/types/supabase'; // optional type import if you have generated types
 
-const dbPath = path.resolve(process.cwd(), 'sdp_kenya_db.json');
-
-// Initialize database file
-if (!fs.existsSync(dbPath)) {
-  fs.writeFileSync(dbPath, JSON.stringify({ members: [], contacts: [] }, null, 2));
+// Initialize Supabase client using environment variables
+if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+  throw new Error('Supabase environment variables are missing. Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.');
 }
 
-export function getDb() {
-  const data = fs.readFileSync(dbPath, 'utf8');
-  return JSON.parse(data);
+const supabase: SupabaseClient<Database> = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+);
+
+/**
+ * Add a new member record to Supabase.
+ */
+export async function addMember(member: any) {
+  const { data, error } = await supabase.from('members').insert(member).select();
+  if (error) {
+    console.error('Supabase addMember error:', error);
+    throw error;
+  }
+  return data?.[0];
 }
 
-export function saveDb(data: any) {
-  fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
+/**
+ * Add a new contact inquiry to Supabase.
+ */
+export async function addContact(contact: any) {
+  const { data, error } = await supabase.from('contacts').insert(contact).select();
+  if (error) {
+    console.error('Supabase addContact error:', error);
+    throw error;
+  }
+  return data?.[0];
 }
 
-export function addMember(member: any) {
-  const db = getDb();
-  member.id = db.members.length + 1;
-  member.created_at = new Date().toISOString();
-  db.members.push(member);
-  saveDb(db);
-  return member;
+/** Retrieve all members (optional helper). */
+export async function getMembers() {
+  const { data, error } = await supabase.from('members').select('*');
+  if (error) {
+    console.error('Supabase getMembers error:', error);
+    throw error;
+  }
+  return data;
 }
 
-export function addContact(contact: any) {
-  const db = getDb();
-  contact.id = db.contacts.length + 1;
-  contact.created_at = new Date().toISOString();
-  db.contacts.push(contact);
-  saveDb(db);
-  return contact;
-}
-
-export function getMembers() {
-  return getDb().members;
-}
-
-export function getContacts() {
-  return getDb().contacts;
+/** Retrieve all contacts (optional helper). */
+export async function getContacts() {
+  const { data, error } = await supabase.from('contacts').select('*');
+  if (error) {
+    console.error('Supabase getContacts error:', error);
+    throw error;
+  }
+  return data;
 }

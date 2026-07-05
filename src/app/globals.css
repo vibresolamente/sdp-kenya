@@ -157,6 +157,9 @@ a:hover {
 }
 
 .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-size: 22px;
     font-weight: 700;
     color: var(--color-white);
@@ -164,6 +167,26 @@ a:hover {
     letter-spacing: 2px;
     text-transform: uppercase;
     position: relative;
+    text-decoration: none;
+}
+
+.logo-image {
+    border-radius: 50%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 6px rgba(255, 0, 128, 0.4));
+    transition: filter var(--transition-speed), transform var(--transition-speed);
+}
+
+.logo:hover .logo-image {
+    filter: drop-shadow(0 0 12px rgba(255, 0, 128, 0.7));
+    transform: scale(1.08);
+}
+
+.logo-text {
+    background: linear-gradient(135deg, var(--color-white) 0%, var(--color-magenta) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .logo::after {
@@ -655,6 +678,9 @@ a:hover {
 }
 
 .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     font-family: var(--font-heading);
     font-weight: 700;
     font-size: 1.2rem;
@@ -663,6 +689,12 @@ a:hover {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+}
+
+.footer-logo-image {
+    border-radius: 50%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 4px rgba(255, 0, 128, 0.3));
 }
 
 .social-links a {
@@ -723,6 +755,19 @@ a:hover {
     .contact-form input, .contact-form select, .contact-form textarea {
         padding: 12px 14px;
         font-size: 0.9rem;
+    }
+
+    .logo {
+        padding-left: 16px;
+        gap: 8px;
+    }
+
+    .logo-text {
+        font-size: 16px;
+    }
+
+    .logo::after {
+        display: none;
     }
 }
 

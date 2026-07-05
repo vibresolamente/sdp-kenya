@@ -14,7 +14,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Missing required fields or consent not agreed.' }, { status: 400 });
     }
 
-    addMember({
+    // Await Supabase insertion
+    await addMember({
       name, id_number, dob, sex, ethnicity, disability_status, religion,
       phone, email, physical_address, county, constituency, ward,
       password, consent_agreed, message: message || ''

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 
@@ -44,7 +45,17 @@ export default function Header() {
 
     return (
         <header className="main-header">
-            <Link href="/" className="logo" onClick={closeNav}>SDP KENYA</Link>
+            <Link href="/" className="logo" onClick={closeNav}>
+                <Image
+                    src="/images/sdp-logo.png"
+                    alt="SDP Kenya Logo"
+                    width={45}
+                    height={45}
+                    className="logo-image"
+                    priority
+                />
+                <span className="logo-text">SDP KENYA</span>
+            </Link>
             <nav className={`desktop-nav ${navOpen ? 'nav-open' : ''}`}>
                 <ul>
                     <li><Link href="/" className={isActive('/')} onClick={closeNav}>Home</Link></li>

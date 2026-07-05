@@ -249,6 +249,8 @@ export default function AdminDashboard() {
             <form onSubmit={handleLogin} className="contact-form">
               <input 
                 type="password" 
+                name="password"
+                autoComplete="current-password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Admin PIN or Password" 
@@ -476,7 +478,7 @@ export default function AdminDashboard() {
                     <input type="text" name="ward" placeholder="Ward" required />
 
                     <h3 style={{fontSize: '1rem', marginBottom: '10px', color: 'var(--color-teal)'}}>Account Security</h3>
-                    <input type="password" name="password" placeholder="Create a Password for Member Portal" required />
+                    <input type="password" name="password" autoComplete="new-password" placeholder="Create a Password for Member Portal" required />
 
                     <button type="submit" className="cta-button" style={{ width: '100%' }}>Register Member</button>
                     
