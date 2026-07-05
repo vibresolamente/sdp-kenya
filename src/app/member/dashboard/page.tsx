@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { getMembers } from '@/lib/db';
 import Link from 'next/link';
 
-export default function MemberDashboard() {
+export default async function MemberDashboard() {
   const cookieStore = cookies();
   const session = cookieStore.get('sdp_member_session');
 
@@ -12,7 +12,7 @@ export default function MemberDashboard() {
   }
 
   const memberId = parseInt(session.value, 10);
-  const members = getMembers();
+  const members = await getMembers();
   const memberData = members.find((m: any) => m.id === memberId);
 
   if (!memberData) {

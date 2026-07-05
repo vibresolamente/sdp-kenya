@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import { getMembers, getContacts } from '@/lib/db';
+import { supabaseServer } from '@/lib/db';
 
 export async function GET() {
   const cookieStore = cookies();
@@ -11,8 +11,10 @@ export async function GET() {
   }
 
   try {
-    const members = await getMembers();
-    const contacts = await getContacts();
+    const { data: members, error: membersError } = await supabaseServer.from('members').select('*');
+    const { data: contacts, error: contactsError } = await supabaseServer.from('contacts').select('*');
+    if (membersError) throw membersError;
+    if (contactsError) throw contactsError;
     return NextResponse.json({ members, contacts });
   } catch (error) {
     console.error('Fetch Admin Data Error:', error);
