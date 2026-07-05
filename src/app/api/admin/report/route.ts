@@ -10,7 +10,7 @@ export async function GET() {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const members = getMembers();
+  const members = await getMembers();
   
   if (members.length === 0) {
     return new NextResponse('No members found', { status: 404 });

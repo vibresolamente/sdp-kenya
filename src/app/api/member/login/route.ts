@@ -9,7 +9,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'ID Number and Password are required' }, { status: 400 });
     }
 
-    const members = getMembers();
+    const members = await getMembers();
     const member = members.find((m: any) => m.id_number === id_number && m.password === password);
 
     if (member) {
