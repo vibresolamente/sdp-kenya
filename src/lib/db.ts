@@ -1,24 +1,32 @@
 import { createClient } from '@supabase/supabase-js';
 
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+let supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-// Initialize Supabase client using public anon key (client‑side)
-if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
-  throw new Error('Supabase environment variables are missing. Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.');
+if (supabaseServiceKey === 'YOUR_SUPABASE_SERVICE_ROLE_KEY') {
+  supabaseServiceKey = undefined;
 }
 
-export const supabase: any = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
-);
-
-// Initialize Supabase client using service role key (server‑side)
-if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
-  throw new Error('Supabase service role key missing. Set SUPABASE_SERVICE_ROLE_KEY in env.');
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error(
+    'Supabase environment variables are missing. Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.'
+  );
 }
 
-export const supabaseServer: any = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
+// Client-side (anon key) Supabase client
+export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+// Server-side Supabase client — uses service role key if available, falls back to anon
+if (!supabaseServiceKey) {
+  console.warn(
+    'SUPABASE_SERVICE_ROLE_KEY is missing or invalid; admin routes will use the public anon client (limited permissions).'
+  );
+}
+
+export const supabaseServer = createClient(
+  supabaseUrl,
+  supabaseServiceKey ?? supabaseAnonKey
 );
 
 /**
@@ -45,7 +53,7 @@ export async function addContact(contact: any) {
   return data?.[0];
 }
 
-/** Retrieve all members (optional helper). */
+/** Retrieve all members. */
 export async function getMembers() {
   const { data, error } = await supabase.from('members').select('*');
   if (error) {
@@ -55,7 +63,7 @@ export async function getMembers() {
   return data;
 }
 
-/** Retrieve all contacts (optional helper). */
+/** Retrieve all contacts. */
 export async function getContacts() {
   const { data, error } = await supabase.from('contacts').select('*');
   if (error) {

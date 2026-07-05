@@ -11,10 +11,18 @@ export async function GET() {
   }
 
   try {
-    const { data: members, error: membersError } = await supabaseServer.from('members').select('*');
-    const { data: contacts, error: contactsError } = await supabaseServer.from('contacts').select('*');
+    // Fetch members data
+    const { data: members, error: membersError } = await supabaseServer
+      .from('members')
+      .select('*');
     if (membersError) throw membersError;
+
+    // Fetch contacts data
+    const { data: contacts, error: contactsError } = await supabaseServer
+      .from('contacts')
+      .select('*');
     if (contactsError) throw contactsError;
+
     return NextResponse.json({ members, contacts });
   } catch (error) {
     console.error('Fetch Admin Data Error:', error);
