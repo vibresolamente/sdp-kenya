@@ -11,7 +11,7 @@ export default function ElectionsRules() {
           <p className="lead">Guidelines ensuring fair, democratic, and transparent internal party processes.</p>
         </div>
 
-        <div className="manifesto-details bg-surface" style={{ padding: '40px', borderRadius: '8px' }}>
+        <div className="manifesto-details bg-surface" style={{ borderRadius: '8px' }}>
           <div className="pillar-detail-block" style={{ borderBottom: 'none', marginBottom: 0, paddingBottom: 0 }}>
             <div className="official-record">
               <div className="official-record">

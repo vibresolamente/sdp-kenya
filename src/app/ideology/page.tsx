@@ -7,7 +7,7 @@ export default function Ideology() {
                 <p className="lead">The fundamental principles and core values driving the Social Democratic Party of Kenya.</p>
             </div>
 
-            <div className="manifesto-details bg-surface" style={{ padding: '40px', borderRadius: '8px' }}>
+            <div className="manifesto-details bg-surface" style={{ borderRadius: '8px' }}>
                 <div className="pillar-detail-block" style={{ borderBottom: 'none', marginBottom: 0, paddingBottom: 0 }}>
                     <h2>1. Introduction</h2>
                     <p>The statement of the Social Democratic Party of Kenya (SDP) is anchored from Party’s Constitution and adhere to the Constitution of Kenya 2010 and the Political Parties Act CAP 7D (PPA) and other applicable laws in the Republic of Kenya</p>

@@ -7,7 +7,7 @@ export default function Constitution() {
                 <p className="lead">The supreme governing document of the Social Democratic Party of Kenya.</p>
             </div>
 
-            <div className="manifesto-details bg-surface" style={{ padding: '40px', borderRadius: '8px' }}>
+            <div className="manifesto-details bg-surface" style={{ borderRadius: '8px' }}>
                 <div className="pillar-detail-block" style={{ borderBottom: 'none', marginBottom: 0, paddingBottom: 0 }}>
                     <div className="official-record">
                         <p><strong>Note:</strong> The full text of the Constitution is currently being digitized. This page will be updated with the complete, amended Constitution submitted to the Registrar of Political Parties in November 2024.</p>

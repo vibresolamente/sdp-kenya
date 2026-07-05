@@ -497,6 +497,7 @@ a:hover {
     backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border) !important;
     border-radius: var(--border-radius) !important;
+    padding: 40px;
 }
 
 .manifesto-details h2 {
@@ -601,7 +602,7 @@ a:hover {
 .official-contact-table td:first-child { font-weight: 700; color: var(--color-text-light); width: 35%; }
 .official-contact-table a { color: var(--color-teal); }
 
-.contact-form input, .contact-form textarea {
+.contact-form input, .contact-form select, .contact-form textarea {
     width: 100%;
     padding: 14px 18px;
     margin-bottom: 16px;
@@ -614,7 +615,16 @@ a:hover {
     transition: all var(--transition-speed);
 }
 
-.contact-form input:focus, .contact-form textarea:focus {
+/* Specific color for select options background and initial text */
+.contact-form select {
+    color: var(--color-text-muted);
+}
+.contact-form select option {
+    background-color: var(--color-surface-dark);
+    color: var(--color-text-light);
+}
+
+.contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
     border-color: var(--color-magenta);
     box-shadow: 0 0 0 3px var(--color-magenta-glow);
     outline: none;
@@ -702,8 +712,31 @@ a:hover {
 
 .desktop-nav { margin-right: 20px; }
 
+/* Responsive spacing variables */
+@media (max-width: 768px) {
+    :root {
+        --spacing-xl: 40px;
+        --spacing-lg: 24px;
+        --spacing-md: 16px;
+    }
+    
+    .contact-form input, .contact-form select, .contact-form textarea {
+        padding: 12px 14px;
+        font-size: 0.9rem;
+    }
+}
+
 @media (max-width: 1000px) {
-    .mobile-menu-toggle { display: block; }
+    .mobile-menu-toggle { 
+        display: block; 
+        position: relative;
+        z-index: 1001;
+    }
+
+    .header-controls {
+        position: relative;
+        z-index: 1001;
+    }
 
     .desktop-nav {
         position: fixed;
@@ -761,6 +794,37 @@ a:hover {
 
     h1 { font-size: 2rem; }
     h2 { font-size: 1.5rem; }
+}
+
+/* Table responsiveness on mobile */
+@media (max-width: 600px) {
+    .official-contact-table, .official-contact-table tbody, .official-contact-table tr, .official-contact-table td {
+        display: block;
+        width: 100% !important;
+    }
+    .official-contact-table td {
+        padding: 8px 0;
+        border-bottom: none;
+    }
+    .official-contact-table td:first-child {
+        font-weight: 700;
+        color: var(--color-teal);
+        width: 100%;
+        margin-top: 12px;
+        padding-bottom: 2px;
+    }
+    .official-contact-table td:last-child {
+        padding-top: 2px;
+        margin-bottom: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .official-contact-table tr:last-child td:last-child {
+        border-bottom: none;
+    }
+    
+    .manifesto-details {
+        padding: 20px !important;
+    }
 }
 
 /* ==================================================

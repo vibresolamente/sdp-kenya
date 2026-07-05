@@ -7,7 +7,7 @@ export default function Manifesto() {
                 <p className="lead">The Social Democratic Party of Kenya (SDP) is committed to policy, not promises. Our roadmap for comprehensive national reform.</p>
             </div>
 
-            <div className="manifesto-details bg-surface" style={{ padding: '40px', borderRadius: '8px' }}>
+            <div className="manifesto-details bg-surface" style={{ borderRadius: '8px' }}>
                 
                 {/* Pillar 1 */}
                 <div className="pillar-detail-block">

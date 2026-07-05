@@ -75,23 +75,23 @@ export default function JoinUs() {
                     <form className="contact-form" onSubmit={handleSubmit}> 
                         <h3 style={{fontSize: '1rem', marginBottom: '10px', color: 'var(--color-teal)'}}>Personal Information</h3>
                         <input type="text" name="name" placeholder="Full Legal Name" required />
-                        <div style={{ display: 'flex', gap: '15px' }}>
-                            <input type="text" name="id_number" placeholder="National ID / Passport No." required style={{ width: '50%' }} />
-                            <input type="date" name="dob" placeholder="Date of Birth" required style={{ width: '50%' }} title="Date of Birth" />
+                        <div className="flex flex-col md:flex-row gap-4">
+                            <input type="text" name="id_number" placeholder="National ID / Passport No." required className="w-full md:w-1/2" />
+                            <input type="date" name="dob" placeholder="Date of Birth" required className="w-full md:w-1/2" title="Date of Birth" />
                         </div>
                         
-                        <div style={{ display: 'flex', gap: '15px' }}>
-                            <select name="sex" required style={{ width: '50%', padding: '14px', marginBottom: '16px', borderRadius: '10px', background: 'rgba(255,255,255,0.04)', color: 'var(--color-text-muted)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                        <div className="flex flex-col md:flex-row gap-4">
+                            <select name="sex" required className="w-full md:w-1/2">
                                 <option value="">Select Gender</option>
                                 <option value="Male">Male</option>
                                 <option value="Female">Female</option>
                                 <option value="Other">Other</option>
                             </select>
-                            <input type="text" name="ethnicity" placeholder="Ethnicity (Optional)" style={{ width: '50%' }} />
+                            <input type="text" name="ethnicity" placeholder="Ethnicity (Optional)" className="w-full md:w-1/2" />
                         </div>
 
-                        <div style={{ display: 'flex', gap: '15px' }}>
-                            <select name="disability_status" required style={{ width: '50%', padding: '14px', marginBottom: '16px', borderRadius: '10px', background: 'rgba(255,255,255,0.04)', color: 'var(--color-text-muted)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                        <div className="flex flex-col md:flex-row gap-4">
+                            <select name="disability_status" required className="w-full md:w-1/2">
                                 <option value="">Disability Status</option>
                                 <option value="None">None</option>
                                 <option value="Physical">Physical</option>
@@ -99,19 +99,19 @@ export default function JoinUs() {
                                 <option value="Hearing">Hearing</option>
                                 <option value="Other">Other</option>
                             </select>
-                            <input type="text" name="religion" placeholder="Religion (Optional)" style={{ width: '50%' }} />
+                            <input type="text" name="religion" placeholder="Religion (Optional)" className="w-full md:w-1/2" />
                         </div>
 
                         <h3 style={{fontSize: '1rem', marginBottom: '10px', color: 'var(--color-teal)'}}>Contact & Location</h3>
-                        <div style={{ display: 'flex', gap: '15px' }}>
-                            <input type="tel" name="phone" placeholder="Phone Number" required style={{ width: '50%' }} />
-                            <input type="email" name="email" placeholder="Email Address" required style={{ width: '50%' }} />
+                        <div className="flex flex-col md:flex-row gap-4">
+                            <input type="tel" name="phone" placeholder="Phone Number" required className="w-full md:w-1/2" />
+                            <input type="email" name="email" placeholder="Email Address" required className="w-full md:w-1/2" />
                         </div>
                         <input type="text" name="physical_address" placeholder="Physical/Postal Address" required />
                         
-                        <div style={{ display: 'flex', gap: '15px' }}>
-                            <input type="text" name="county" placeholder="County" required style={{ width: '50%' }} />
-                            <input type="text" name="constituency" placeholder="Constituency" required style={{ width: '50%' }} />
+                        <div className="flex flex-col md:flex-row gap-4">
+                            <input type="text" name="county" placeholder="County" required className="w-full md:w-1/2" />
+                            <input type="text" name="constituency" placeholder="Constituency" required className="w-full md:w-1/2" />
                         </div>
                         <input type="text" name="ward" placeholder="Ward" required />
 
