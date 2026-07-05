@@ -65,7 +65,7 @@ export default function Ideology() {
                             </ul>
                         </li>
                         <li><strong>f) Flag:</strong> The Flag of the Party shall be a pink rectangle with the acronym of the Party (SDP) in the middle, and the Party slogan “Change – Mageuzi” at the bottom.</li>
-                        <li><strong>g) Headquarters:</strong> The registered office of the Party is Lwande Apartment, Room 52, Along Kakamega -Kisumu Highway, Postal Address is P.O. Box 1559 – 50100, Kakamega and its official Website Address is www.sdpkenya.org</li>
+                        <li><strong>g) Headquarters:</strong> The registered office of the Party is Lwande Apartment, Room 52, Along Kakamega -Kisumu Highway, Postal Address is P.O. Box 1559 – 50100, Kakamega and its official Website Address is sdpkenya.co.ke</li>
                     </ul>
 
                     <h2 className="mt-5">6. Relevance of party particulars</h2>

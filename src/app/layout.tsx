@@ -17,7 +17,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.sdpkenya.org'),
+  metadataBase: new URL('https://sdpkenya.co.ke'),
   title: "SDP Kenya | CHANGE - MAGEUZI",
   description: "The Social Democratic Party of Kenya: Dedicated to integrity, opportunity, and the rule of law.",
 };
