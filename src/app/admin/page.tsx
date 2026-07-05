@@ -83,7 +83,7 @@ export default function AdminDashboard() {
   // Fetch data
   const fetchData = async () => {
     try {
-      const response = await fetch('/api/admin/data');
+      const response = await fetch('/api/admin/data', { credentials: 'include' });
       if (response.ok) {
         const data = await response.json();
         setMembers(data.members || []);
@@ -108,13 +108,16 @@ export default function AdminDashboard() {
 
     try {
       const response = await fetch('/api/admin/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ password }),
-      });
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password }),
+          credentials: 'include'
+        });
 
       if (response.ok) {
-        await fetchData();
+        // Successful login – reload to ensure the authentication cookie is sent on subsequent requests
+        window.location.reload();
+        return;
       } else {
         const errData = await response.json();
         setError(errData.error || 'Invalid credentials');
@@ -128,7 +131,7 @@ export default function AdminDashboard() {
 
   const handleLogout = async () => {
     try {
-      await fetch('/api/admin/logout', { method: 'POST' });
+      await fetch('/api/admin/logout', { method: 'POST', credentials: 'include' });
       setIsAuthenticated(false);
       setMembers([]);
       setContacts([]);
@@ -145,10 +148,11 @@ export default function AdminDashboard() {
 
     try {
       const response = await fetch('/api/admin/data', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action }),
-      });
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action }),
+          credentials: 'include'
+        });
 
       if (response.ok) {
         alert('Data cleared successfully.');
