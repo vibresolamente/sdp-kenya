@@ -251,6 +251,15 @@ export default function AdminDashboard() {
             <p style={{ marginBottom: '30px' }}>Please enter the administrator credentials to access the secure records.</p>
             
             <form onSubmit={handleLogin} className="contact-form">
+              {/* Hidden username field for accessibility/password-manager compliance */}
+              <input 
+                type="text" 
+                name="username" 
+                autoComplete="username" 
+                value="admin" 
+                style={{ display: 'none' }} 
+                readOnly 
+              />
               <input 
                 type="password" 
                 name="password"
@@ -482,6 +491,7 @@ export default function AdminDashboard() {
                     <input type="text" name="ward" placeholder="Ward" required />
 
                     <h3 style={{fontSize: '1rem', marginBottom: '10px', color: 'var(--color-teal)'}}>Account Security</h3>
+                    <input type="text" name="username_fallback" autoComplete="username" style={{ display: 'none' }} value="new_member" readOnly />
                     <input type="password" name="password" autoComplete="new-password" placeholder="Create a Password for Member Portal" required />
 
                     <button type="submit" className="cta-button" style={{ width: '100%' }}>Register Member</button>
