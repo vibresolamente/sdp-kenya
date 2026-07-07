@@ -33,7 +33,7 @@ export const supabaseServer = createClient(
  * Add a new member record to Supabase.
  */
 export async function addMember(member: any) {
-  const { data, error } = await supabase.from('members').insert(member).select();
+  const { data, error } = await supabaseServer.from('members').insert(member).select();
   if (error) {
     console.error('Supabase addMember error:', error);
     throw error;
@@ -45,7 +45,7 @@ export async function addMember(member: any) {
  * Add a new contact inquiry to Supabase.
  */
 export async function addContact(contact: any) {
-  const { data, error } = await supabase.from('contacts').insert(contact).select();
+  const { data, error } = await supabaseServer.from('contacts').insert(contact).select();
   if (error) {
     console.error('Supabase addContact error:', error);
     throw error;

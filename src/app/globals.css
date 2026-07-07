@@ -720,7 +720,7 @@ a:hover {
    11. RESPONSIVE & MOBILE MENU
    ================================================== */
 .mobile-menu-toggle {
-    display: none;
+    display: block;
     cursor: pointer;
     font-size: 24px;
     padding: 8px;
@@ -773,7 +773,7 @@ a:hover {
 
 @media (max-width: 1000px) {
     .mobile-menu-toggle {
-        display: none;
+        display: block;
     }
 
     .header-controls {
@@ -786,7 +786,7 @@ a:hover {
         width: 100%;
         background: transparent;
         z-index: 1002;
-        display: block;
+        display: none;
         padding-top: 1rem;
         transform: none;
         overflow: visible;
@@ -794,6 +794,7 @@ a:hover {
     }
 
     .desktop-nav.nav-open {
+        display: block;
         /* No transform needed on mobile */
     }
 
@@ -806,7 +807,8 @@ a:hover {
     .desktop-nav a {
         font-size: 1.6rem;
         padding: 16px 0;
-        color: var(--color-text-light);
+        cursor: pointer;
+        pointer-events: auto;
         display: block;
         background: none !important;
     }
