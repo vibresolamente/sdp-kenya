@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { addContact } from '@/lib/db';
+import { sendContactEmail } from '@/lib/email';
 
 export async function POST(request: Request) {
   try {
@@ -10,7 +11,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    addContact({ name, email, subject, message });
+    await addContact({ name, email, subject, message });
+    // Send email notification
+    await sendContactEmail(name, email, subject, message);
 
     return NextResponse.json({ success: true, message: 'Contact inquiry received.' }, { status: 201 });
   } catch (error) {
