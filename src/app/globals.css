@@ -789,6 +789,12 @@ a:hover {
         display: none;
         padding-top: 1rem;
         transform: none;
+    }
+    
+    /* Show desktop navigation when navOpen */
+    .desktop-nav.nav-open {
+        display: block;
+    }
         overflow: visible;
         margin-right: 0;
     }
