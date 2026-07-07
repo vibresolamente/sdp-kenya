@@ -812,7 +812,7 @@ a:hover {
 
     .desktop-nav a {
         font-size: 1.6rem;
-        padding: 12px 0;
+        padding: 16px 0;
         color: var(--color-text-light);
         display: block;
         background: none !important;
