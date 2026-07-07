@@ -794,6 +794,8 @@ a:hover {
         align-items: center;
         justify-content: center;
         transform: translateX(100%);
+        overflow-y: auto; /* allow scrolling */
+        -webkit-overflow-scrolling: touch;
         transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
         margin-right: 0;
     }
