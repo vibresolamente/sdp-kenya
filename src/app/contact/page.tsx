@@ -44,16 +44,19 @@ export default function Contact() {
                         <tbody>
                             <tr><td><strong>Reference No:</strong></td><td>SDP/C&N/Vol.1/11/06</td></tr>
                             <tr><td><strong>Correspondent:</strong></td><td>Nyumbah Nyanjong&apos; Duncan (Mr.)</td></tr>
-                            <tr><td><strong>Official Email:</strong></td><td><a href="mailto:nyumbah@gmail.com">nyumbah@gmail.com</a></td></tr>
-                            <tr><td><strong>Official Phone:</strong></td><td>0724484592</td></tr>
+                            <tr><td><strong>Official Email:</strong></td><td><a href="mailto:sdpkenya@gmail.com">sdpkenya@gmail.com</a></td></tr>
+                            <tr><td><strong>Official Phone:</strong></td><td>0725382047 / 0724484592</td></tr>
+                            <tr><td><strong>Website:</strong></td><td><a href="https://www.sdpkenya.org" target="_blank" rel="noopener noreferrer">www.sdpkenya.org</a></td></tr>
                             <tr><td><strong>Mailing Address:</strong></td><td>P.O.Box 1131-00606, NAIROBI.</td></tr>
                         </tbody>
                     </table>
 
                     <h3 className="mt-5">Follow Our Progress</h3>
                     <div className="social-links" style={{ fontSize: '1.1rem' }}>
-                        <a href="#" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i> X (@SDPKenya)</a> |
-                        <a href="#" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="https://x.com/SDPKenya" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i> X (@SDPKenya)</a> |
+                        <a href="https://www.facebook.com/SDPKenya" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i> Facebook</a> |
+                        <a href="https://www.instagram.com/SDPKenya" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i> Instagram</a> |
+                        <a href="https://www.youtube.com/@SDPKenya" target="_blank" rel="noopener noreferrer"><i className="fab fa-youtube"></i> YouTube</a>
                     </div>
                 </div>
 
