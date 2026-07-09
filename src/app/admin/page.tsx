@@ -437,7 +437,7 @@ export default function AdminDashboard() {
                   style={{
                     padding: '8px 16px',
                     fontSize: '0.9rem',
-                    background: 'linear-gradient(135deg, var(--sdp-green), #007a3d)',
+                    background: 'linear-gradient(135deg, var(--sdp-cyan), #00a2d9)',
                     boxShadow: 'none',
                     display: 'block',
                     textDecoration: 'none'

@@ -59,14 +59,12 @@ export default function Header() {
             <nav className={`desktop-nav ${navOpen ? 'nav-open' : ''}`}>
                 <ul>
                     <li><Link href="/" className={isActive('/')} onClick={closeNav}>Home</Link></li>
-                    <li><Link href="/ideology" className={isActive('/ideology')} onClick={closeNav}>Ideology</Link></li>
                     <li><Link href="/manifesto" className={isActive('/manifesto')} onClick={closeNav}>Our Plan</Link></li>
                     <li><Link href="/documents" className={isActive('/documents')} onClick={closeNav}>Documents</Link></li>
                     <li><Link href="/pictures" className={isActive('/pictures')} onClick={closeNav}>Pictures</Link></li>
                     <li><Link href="/forms" className={isActive('/forms')} onClick={closeNav}>Forms</Link></li>
                     <li><Link href="/contact" className={isActive('/contact')} onClick={closeNav}>Contact</Link></li>
                     <li><Link href="/privacy" className={isActive('/privacy')} onClick={closeNav}>Privacy Policy</Link></li>
-                    <li><Link href="/elections-rules" className={isActive('/elections-rules')} onClick={closeNav}>Elections Rules</Link></li>
                     <li><Link href="/join-us" className={`cta-nav-button ${isActive('/join-us')}`} onClick={closeNav}>Join Us</Link></li>
                 </ul>
             </nav>

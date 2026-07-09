@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
-import { getMembers } from '@/lib/db';
+import { getMemberById } from '@/lib/db';
 import Link from 'next/link';
 
 export default async function MemberDashboard() {
@@ -12,8 +12,7 @@ export default async function MemberDashboard() {
   }
 
   const memberId = parseInt(session.value, 10);
-  const members = await getMembers();
-  const memberData = members.find((m: any) => m.id === memberId);
+  const memberData = await getMemberById(memberId);
 
   if (!memberData) {
     redirect('/member/login');

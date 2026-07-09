@@ -55,7 +55,7 @@ export async function addContact(contact: any) {
 
 /** Retrieve all members. */
 export async function getMembers() {
-  const { data, error } = await supabase.from('members').select('*');
+  const { data, error } = await supabaseServer.from('members').select('*');
   if (error) {
     console.error('Supabase getMembers error:', error);
     throw error;
@@ -65,9 +65,23 @@ export async function getMembers() {
 
 /** Retrieve all contacts. */
 export async function getContacts() {
-  const { data, error } = await supabase.from('contacts').select('*');
+  const { data, error } = await supabaseServer.from('contacts').select('*');
   if (error) {
     console.error('Supabase getContacts error:', error);
+    throw error;
+  }
+  return data;
+}
+
+/** Retrieve a single member by ID. */
+export async function getMemberById(id: number) {
+  const { data, error } = await supabaseServer
+    .from('members')
+    .select('*')
+    .eq('id', id)
+    .maybeSingle();
+  if (error) {
+    console.error('Supabase getMemberById error:', error);
     throw error;
   }
   return data;

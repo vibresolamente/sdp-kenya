@@ -11,11 +11,11 @@
     --color-surface-elevated: #1c1c2e;
     --color-text-light: #e8e8f0;
     --color-text-muted: #8888a0;
-    --color-magenta: #FF69B4;
-    --color-magenta-glow: rgba(255, 105, 180, 0.3);
-    --color-teal: #00BFFF;
-    --color-teal-glow: rgba(0, 191, 255, 0.3);
-    --color-accent-orange: #FFA500;
+    --color-magenta: #ff0090;
+    --color-magenta-glow: rgba(255, 0, 144, 0.3);
+    --color-teal: #3bd8f7;
+    --color-teal-glow: rgba(59, 216, 247, 0.3);
+    --color-accent-orange: #3bd8f7;
     --color-white: #FFFFFF;
     --font-heading: 'Montserrat', sans-serif;
     --font-body: 'Roboto', sans-serif;
@@ -95,19 +95,18 @@ a:hover {
 
 /* SDP Logo brand colours */
 :root {
-    --sdp-pink:   #E91E8C;
-    --sdp-green:  #00A651;
-    --sdp-yellow: #FFD700;
-    --sdp-pink-glow:   rgba(233, 30, 140, 0.35);
-    --sdp-green-glow:  rgba(0, 166, 81, 0.35);
-    --sdp-yellow-glow: rgba(255, 215, 0, 0.35);
+    --sdp-pink:   #ff0090;
+    --sdp-cyan:   #3bd8f7;
+    --sdp-white:  #ffffff;
+    --sdp-pink-glow:   rgba(255, 0, 144, 0.35);
+    --sdp-cyan-glow:   rgba(59, 216, 247, 0.35);
+    --sdp-white-glow:  rgba(255, 255, 255, 0.35);
 }
 
 /* Accent color cycling — follows SDP logo colours */
 @keyframes colorCycle {
     0%   { color: var(--sdp-pink);   text-shadow: 0 0 24px var(--sdp-pink-glow); }
-    33%  { color: var(--sdp-green);  text-shadow: 0 0 24px var(--sdp-green-glow); }
-    66%  { color: var(--sdp-yellow); text-shadow: 0 0 24px var(--sdp-yellow-glow); }
+    50%  { color: var(--sdp-cyan);   text-shadow: 0 0 24px var(--sdp-cyan-glow); }
     100% { color: var(--sdp-pink);   text-shadow: 0 0 24px var(--sdp-pink-glow); }
 }
 
