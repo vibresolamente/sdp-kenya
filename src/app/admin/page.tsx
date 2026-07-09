@@ -429,6 +429,23 @@ export default function AdminDashboard() {
               >
                 📥 Export CSV
               </button>
+              {activeTab === 'members' && (
+                <a
+                  href="/api/admin/download?format=csv"
+                  download="sdp_members.csv"
+                  className="cta-button"
+                  style={{
+                    padding: '8px 16px',
+                    fontSize: '0.9rem',
+                    background: 'linear-gradient(135deg, var(--sdp-green), #007a3d)',
+                    boxShadow: 'none',
+                    display: 'block',
+                    textDecoration: 'none'
+                  }}
+                >
+                  ⬇️ Download Members
+                </a>
+              )}
               <button 
                 onClick={() => handleClearData(activeTab === 'members' ? 'clear_members' : 'clear_contacts')}
                 className="cta-button"

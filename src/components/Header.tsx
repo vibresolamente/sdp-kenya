@@ -66,8 +66,7 @@ export default function Header() {
                     <li><Link href="/forms" className={isActive('/forms')} onClick={closeNav}>Forms</Link></li>
                     <li><Link href="/contact" className={isActive('/contact')} onClick={closeNav}>Contact</Link></li>
                     <li><Link href="/privacy" className={isActive('/privacy')} onClick={closeNav}>Privacy Policy</Link></li>
-<li><Link href="/constitution" className={isActive('/constitution')} onClick={closeNav}>Constitution</Link></li>
-<li><Link href="/elections-rules" className={isActive('/elections-rules')} onClick={closeNav}>Elections Rules</Link></li>
+                    <li><Link href="/elections-rules" className={isActive('/elections-rules')} onClick={closeNav}>Elections Rules</Link></li>
                     <li><Link href="/join-us" className={`cta-nav-button ${isActive('/join-us')}`} onClick={closeNav}>Join Us</Link></li>
                 </ul>
             </nav>
