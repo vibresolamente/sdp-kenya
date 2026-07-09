@@ -3,16 +3,16 @@ import { supabaseServer } from "@/lib/supabaseClient";
 
 export async function POST(request: Request) {
   try {
-    const { id_number, password } = await request.json();
+    const { email, password } = await request.json();
 
-    if (!id_number || !password) {
-      return NextResponse.json({ error: "ID number and password are required" }, { status: 400 });
+    if (!email || !password) {
+      return NextResponse.json({ error: "Email and password are required" }, { status: 400 });
     }
 
     const { data: member, error } = await supabaseServer
       .from('members')
       .select('id, id_number, email, password')
-      .or(`id_number.eq."${id_number}",email.eq."${id_number}"`)
+      .eq('email', email)
       .maybeSingle();
 
     if (error || !member) {

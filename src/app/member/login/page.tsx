@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export default function MemberLogin() {
-  const [idNumber, setIdNumber] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
@@ -18,7 +18,7 @@ export default function MemberLogin() {
       const response = await fetch('/api/member/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id_number: idNumber, password }),
+        body: JSON.stringify({ email, password }),
       });
 
       if (response.ok) {
@@ -38,7 +38,7 @@ export default function MemberLogin() {
       <div className="container" style={{ maxWidth: '500px' }}>
         <div className="bg-surface" style={{ padding: '40px', borderRadius: '12px', border: '1px solid var(--glass-border)' }}>
           <h1 className="text-center" style={{ fontSize: '2rem', marginBottom: '10px' }}>
-            Member <span className="highlight-magenta animated-accent">Portal</span>
+            Member <span className="highlight-magenta animated-accent">Login</span>
           </h1>
           <p className="text-center mb-4" style={{ color: 'var(--color-text-muted)' }}>
             Log in to view your registration status and details.
@@ -46,10 +46,10 @@ export default function MemberLogin() {
 
           <form onSubmit={handleLogin} className="contact-form">
             <input 
-              type="text" 
-              value={idNumber}
-              onChange={(e) => setIdNumber(e.target.value)}
-              placeholder="National ID / Passport Number" 
+              type="email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email Address" 
               required 
             />
             <input 
@@ -67,7 +67,8 @@ export default function MemberLogin() {
           {error && <p className="text-center mt-5 font-bold" style={{ color: 'var(--color-magenta)' }}>{error}</p>}
           
           <p className="text-center mt-5" style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>
-            Not a member yet? <Link href="/join-us" className="read-more-link" style={{ marginTop: 0 }}>Register here</Link>
+            Not a member yet? <Link href="/join-us" className="read-more-link" style={{ marginTop: 0 }}>Register here</Link><br/>
+            <span style={{ color: 'var(--color-text-muted)', fontSize: '0.8rem' }}>Use the email you registered with</span>
           </p>
           <p className="text-center mt-3" style={{ fontSize: '0.9rem' }}>
             <Link href="/member/reset-password" style={{ color: 'var(--color-text-muted)' }}>Forgot Password?</Link>
