@@ -98,20 +98,23 @@ a:hover {
     --sdp-pink:   #ff0090;
     --sdp-cyan:   #3bd8f7;
     --sdp-white:  #ffffff;
+    --sdp-green:  #3cd070;
     --sdp-pink-glow:   rgba(255, 0, 144, 0.35);
     --sdp-cyan-glow:   rgba(59, 216, 247, 0.35);
     --sdp-white-glow:  rgba(255, 255, 255, 0.35);
+    --sdp-green-glow:  rgba(60, 208, 112, 0.35);
 }
 
 /* Accent color cycling — follows SDP logo colours */
 @keyframes colorCycle {
     0%   { color: var(--sdp-pink);   text-shadow: 0 0 24px var(--sdp-pink-glow); }
-    50%  { color: var(--sdp-cyan);   text-shadow: 0 0 24px var(--sdp-cyan-glow); }
+    33%  { color: var(--sdp-cyan);   text-shadow: 0 0 24px var(--sdp-cyan-glow); }
+    66%  { color: var(--sdp-green);  text-shadow: 0 0 24px var(--sdp-green-glow); }
     100% { color: var(--sdp-pink);   text-shadow: 0 0 24px var(--sdp-pink-glow); }
 }
 
 .animated-accent {
-    animation: colorCycle 3s infinite linear;
+    animation: colorCycle 4s infinite linear;
     font-weight: 700;
 }
 
@@ -205,7 +208,7 @@ a:hover {
     left: 24px;
     width: 30px;
     height: 3px;
-    background: linear-gradient(90deg, var(--color-magenta), var(--color-teal));
+    background: linear-gradient(90deg, var(--sdp-pink), var(--sdp-cyan), var(--sdp-green));
     border-radius: 2px;
 }
 
@@ -391,7 +394,7 @@ a:hover {
 }
 
 .about-section h2 {
-    background: linear-gradient(135deg, var(--color-magenta), var(--color-teal));
+    background: linear-gradient(135deg, var(--sdp-pink), var(--sdp-cyan), var(--sdp-green));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -445,7 +448,7 @@ a:hover {
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--color-magenta), var(--color-teal));
+    background: linear-gradient(90deg, var(--sdp-pink), var(--sdp-cyan), var(--sdp-green));
     opacity: 0;
     transition: opacity var(--transition-speed);
 }
@@ -504,7 +507,7 @@ a:hover {
     font-size: 2.5rem;
     margin-bottom: 20px;
     display: block;
-    background: linear-gradient(135deg, var(--color-teal), var(--color-magenta));
+    background: linear-gradient(135deg, var(--sdp-pink), var(--sdp-cyan), var(--sdp-green));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -535,7 +538,7 @@ a:hover {
 .manifesto-details h2 {
     color: var(--color-white);
     border-left: 4px solid;
-    border-image: linear-gradient(180deg, var(--color-magenta), var(--color-teal)) 1;
+    border-image: linear-gradient(180deg, var(--sdp-pink), var(--sdp-cyan), var(--sdp-green)) 1;
     padding-left: 16px;
     margin-top: var(--spacing-lg);
     font-size: 1.6rem;
@@ -592,7 +595,7 @@ a:hover {
     padding: 28px;
     border-radius: 12px;
     border-left: 4px solid;
-    border-image: linear-gradient(180deg, var(--color-teal), var(--color-magenta)) 1;
+    border-image: linear-gradient(180deg, var(--sdp-cyan), var(--sdp-green), var(--sdp-pink)) 1;
     margin-top: 30px;
 }
 
@@ -618,7 +621,7 @@ a:hover {
 
 .contact-info h2, .contact-form-container h2 {
     text-align: left;
-    background: linear-gradient(135deg, var(--color-magenta), var(--color-teal));
+    background: linear-gradient(135deg, var(--sdp-pink), var(--sdp-cyan), var(--sdp-green));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -694,7 +697,7 @@ a:hover {
     font-weight: 700;
     font-size: 1.2rem;
     letter-spacing: 2px;
-    background: linear-gradient(135deg, var(--color-magenta), var(--color-teal));
+    background: linear-gradient(135deg, var(--sdp-pink), var(--sdp-cyan), var(--sdp-green));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

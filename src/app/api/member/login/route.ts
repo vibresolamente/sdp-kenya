@@ -16,6 +16,9 @@ export async function POST(request: Request) {
       .single();
 
     if (error || !member) {
+      if (error && error.code !== 'PGRST116') {
+        console.error("Database query error during login:", error);
+      }
       return NextResponse.json({ error: "Invalid ID number or password" }, { status: 401 });
     }
 
