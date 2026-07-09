@@ -18,15 +18,13 @@ export default function Footer() {
                 <div className="footer-links">
                     <p>Email: <a href="mailto:sdpkenya@gmail.com" style={{ color: 'inherit' }}>sdpkenya@gmail.com</a></p>
                     <p>Phone: 0725382047 / 0724484592</p>
-                    <p>Website: <a href="https://www.sdpkenya.org" style={{ color: 'inherit' }}>www.sdpkenya.org</a></p>
+                    <p>Website: <a href="https://www.sdpkenya.co.ke" style={{ color: 'inherit' }}>www.sdpkenya.co.ke</a></p>
                     <p>Official Address: P.O.Box 1131-00606, NAIROBI.</p>
                     <p style={{ marginTop: '10px' }}><Link href="/privacy" style={{ color: 'var(--color-text-muted)', textDecoration: 'none' }}>Privacy Policy</Link></p>
                 </div>
                 <div className="social-links">
-                    <a href="https://x.com/SDPKenya" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i> X</a> |
-                    <a href="https://www.facebook.com/SDPKenya" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i> Facebook</a> |
-                    <a href="https://www.instagram.com/SDPKenya" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i> Instagram</a> |
-                    <a href="https://www.youtube.com/@SDPKenya" target="_blank" rel="noopener noreferrer"><i className="fab fa-youtube"></i> YouTube</a>
+                    <a href="https://x.com/grielishaqj" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i> X</a> |
+                    <a href="https://www.facebook.com/profile.php?id=61591480964798" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i> Facebook</a>
                 </div>
             </div>
             <p className="copyright">
