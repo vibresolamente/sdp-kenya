@@ -69,6 +69,9 @@ export default function MemberLogin() {
           <p className="text-center mt-5" style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>
             Not a member yet? <Link href="/join-us" className="read-more-link" style={{ marginTop: 0 }}>Register here</Link>
           </p>
+          <p className="text-center mt-3" style={{ fontSize: '0.9rem' }}>
+            <Link href="/member/reset-password" style={{ color: 'var(--color-text-muted)' }}>Forgot Password?</Link>
+          </p>
         </div>
       </div>
     </section>

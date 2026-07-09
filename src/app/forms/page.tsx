@@ -8,9 +8,9 @@ export default function Forms() {
         <p className="lead">Download the party&apos;s recruitment and membership forms.</p>
         <ul className="list-disc pl-6 space-y-2">
           <li>
-            <Link href="/forms/membership_form.docx" target="_blank" className="cta-button" download>
+            <a href="/forms/membership_form.docx" target="_blank" className="cta-button" download>
               Membership Recruitment Form (DOCX)
-            </Link>
+            </a>
           </li>
         </ul>
       </div>

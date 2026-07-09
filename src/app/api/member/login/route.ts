@@ -11,9 +11,9 @@ export async function POST(request: Request) {
 
     const { data: member, error } = await supabaseServer
       .from('members')
-      .select('id, id_number, password')
-      .eq('id_number', id_number)
-      .single();
+      .select('id, id_number, email, password')
+      .or(`id_number.eq."${id_number}",email.eq."${id_number}"`)
+      .maybeSingle();
 
     if (error || !member) {
       if (error && error.code !== 'PGRST116') {

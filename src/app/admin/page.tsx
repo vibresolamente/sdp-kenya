@@ -327,9 +327,9 @@ export default function AdminDashboard() {
                   width: '100%',
                   padding: '10px 14px',
                   borderRadius: '8px',
-                  background: 'rgba(255,255,255,0.03)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  color: '#fff'
+                  background: 'rgba(0,0,0,0.02)',
+                  border: '1px solid rgba(0,0,0,0.08)',
+                  color: 'var(--color-text-light)'
                 }}
               />
             </div>
@@ -344,9 +344,9 @@ export default function AdminDashboard() {
                     width: '100%',
                     padding: '10px 14px',
                     borderRadius: '8px',
-                    background: 'var(--color-surface-dark)',
-                    border: '1px solid rgba(255,255,255,0.08)',
-                    color: '#fff',
+                    background: 'var(--color-surface-elevated)',
+                    border: '1px solid rgba(0,0,0,0.08)',
+                    color: 'var(--color-text-light)',
                     height: '42px'
                   }}
                 >
@@ -532,8 +532,8 @@ export default function AdminDashboard() {
                 </thead>
                 <tbody>
                   {filteredMembers.map((member) => (
-                    <tr key={member.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-                      <td style={{ padding: '12px', fontWeight: 600, color: '#fff' }}>
+                    <tr key={member.id} style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
+                      <td style={{ padding: '12px', fontWeight: 600, color: 'var(--color-text-light)' }}>
                         <div>{member.name}</div>
                         <div style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)' }}>{member.sex || 'N/A'}</div>
                       </td>
@@ -576,8 +576,8 @@ export default function AdminDashboard() {
                 </thead>
                 <tbody>
                   {filteredContacts.map((contact) => (
-                    <tr key={contact.id} style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
-                      <td style={{ padding: '12px', fontWeight: 600, color: '#fff' }}>{contact.name}</td>
+                    <tr key={contact.id} style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
+                      <td style={{ padding: '12px', fontWeight: 600, color: 'var(--color-text-light)' }}>{contact.name}</td>
                       <td style={{ padding: '12px' }}><a href={`mailto:${contact.email}`}>{contact.email}</a></td>
                       <td style={{ padding: '12px', fontWeight: 500, color: 'var(--color-teal)' }}>{contact.subject}</td>
                       <td style={{ padding: '12px', fontSize: '0.9rem', whiteSpace: 'pre-wrap', color: 'var(--color-text-light)' }}>

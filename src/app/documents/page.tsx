@@ -9,15 +9,15 @@ export default function Documents() {
             <p className="lead">The Social Democratic Party of Kenya (SDP) is committed to absolute transparency and compliance with the **Political Parties Act, 2011**. Our official filings were submitted on **November 27, 2024**.</p>
 
             <div className="document-link-container">
-                <Link href="/documents/SDP_Constitution_2025.docx" className="document-link cta-button" target="_blank">
+                <a href="/documents/SDP_Constitution_2025.docx" className="document-link cta-button" target="_blank" download>
                     <i className="fas fa-file-word"></i> SDP Constitution (2025)
-                </Link>
-                <Link href="/documents/Ideology_Statement.docx" className="document-link cta-button" target="_blank">
+                </a>
+                <a href="/documents/Ideology_Statement.docx" className="document-link cta-button" target="_blank" download>
                     <i className="fas fa-file-word"></i> Ideology Statement
-                </Link>
-                <Link href="/documents/Elections_and_Nomination_Rules_2025.doc" className="document-link cta-button" target="_blank">
+                </a>
+                <a href="/documents/Elections_and_Nomination_Rules_2025.doc" className="document-link cta-button" target="_blank" download>
                     <i className="fas fa-file-word"></i> Elections &amp; Nomination Rules
-                </Link>
+                </a>
             </div>
 
             <h2 className="mt-5">Official Administrative Record Details</h2>
