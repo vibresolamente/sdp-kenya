@@ -148,25 +148,26 @@ a:hover {
 }
 
 /* ==================================================
-   3. HEADER & NAVIGATION (Glassmorphism)
+   3. HEADER & NAVIGATION (Glassmorphism & Black Text)
    ================================================== */
 .main-header {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    padding: 16px 0;
-    border-bottom: 1px solid var(--glass-border);
+    padding: 14px 0;
+    border-bottom: 3px solid var(--color-magenta);
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     transition: all var(--transition-speed);
 }
 
 .main-header:hover {
-    border-bottom-color: var(--color-magenta);
+    border-bottom-color: #d8006f;
 }
 
 .logo {
@@ -174,8 +175,8 @@ a:hover {
     align-items: center;
     gap: 10px;
     font-size: 22px;
-    font-weight: 700;
-    color: var(--color-white);
+    font-weight: 800;
+    color: #000000 !important;
     padding-left: 24px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -196,10 +197,10 @@ a:hover {
 }
 
 .logo-text {
-    background: linear-gradient(135deg, var(--color-white) 0%, var(--color-magenta) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #000000 !important;
+    font-weight: 800;
+    -webkit-text-fill-color: #000000 !important;
+    background-clip: unset;
 }
 
 .logo::after {
@@ -221,23 +222,24 @@ a:hover {
 }
 
 .desktop-nav a {
-    color: var(--color-text-muted);
-    padding: 8px 16px;
+    color: #000000 !important;
+    padding: 8px 14px;
     border-radius: 8px;
     font-size: 0.95rem;
-    font-weight: 500;
+    font-weight: 700;
     transition: all var(--transition-speed);
     position: relative;
 }
 
 .desktop-nav a:hover {
-    color: var(--color-white);
-    background: rgba(255, 105, 180, 0.1);
+    color: #d8006f !important;
+    background: rgba(216, 0, 111, 0.12);
 }
 
 .desktop-nav a.active-link {
-    color: var(--color-magenta);
-    background: rgba(255, 105, 180, 0.12);
+    color: #d8006f !important;
+    background: rgba(216, 0, 111, 0.18);
+    font-weight: 800;
 }
 
 .cta-nav-button {
@@ -675,19 +677,55 @@ a:hover {
    10. FOOTER (Premium Dark)
    ================================================== */
 .main-footer {
-    background: var(--color-bg-dark);
-    border-top: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.45);
+    border-top: 2px solid var(--glass-border);
     padding: 60px 0 40px;
-    text-align: center;
     font-size: 0.95rem;
 }
 
 .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 36px;
+    text-align: left;
+    color: #ffffff;
+}
+
+.footer-col {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    color: var(--color-text-muted);
+    flex-direction: column;
+}
+
+.footer-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #ffffff;
+    border-bottom: 2px solid var(--color-magenta);
+    padding-bottom: 6px;
+    display: inline-block;
+    width: fit-content;
+}
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-list li, .footer-list a {
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 0.95rem;
+    transition: color var(--transition-speed);
+    text-decoration: none;
+}
+
+.footer-list a:hover {
+    color: var(--color-accent-orange);
+    padding-left: 3px;
 }
 
 .footer-logo {
@@ -698,10 +736,7 @@ a:hover {
     font-weight: 700;
     font-size: 1.2rem;
     letter-spacing: 2px;
-    background: linear-gradient(135deg, var(--sdp-pink), var(--sdp-cyan), var(--sdp-green));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #ffffff;
 }
 
 .footer-logo-image {
@@ -710,23 +745,14 @@ a:hover {
     filter: drop-shadow(0 0 4px rgba(255, 0, 128, 0.3));
 }
 
-.social-links a {
-    color: var(--color-text-muted);
-    transition: color var(--transition-speed);
-    margin: 0 8px;
-}
-
-.social-links a:hover {
-    color: var(--color-magenta);
-}
-
 .copyright {
-    margin-top: 30px;
+    margin-top: 40px;
     width: 100%;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
     padding-top: 24px;
-    color: var(--color-text-muted);
+    color: rgba(255, 255, 255, 0.85);
     font-size: 0.85rem;
+    text-align: center;
 }
 
 /* ==================================================
