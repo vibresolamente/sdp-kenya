@@ -7,9 +7,20 @@ export default function Home() {
         <section id="home" className="hero-section" style={{ backgroundImage: "url('/images/hero.png')" }}>
             <div className="hero-overlay"></div>
             <div className="hero-content">
-                <h1>A New Era of <span className="highlight-magenta animated-accent">CHANGE</span> is Here.</h1>
+                <h1><span className="animated-accent">Time for Change Has Come</span></h1>
                 <p>The Social Democratic Party of Kenya: Dedicated to integrity, opportunity, and the rule of law. **MAGEUZI** driven by principle.</p>
                 <Link href="/manifesto" className="cta-button">View Our Manifesto</Link>
+            </div>
+        </section>
+
+        {/* SECTION: JOIN SDP */}
+        <section className="join-sdp-banner content-padding" style={{ background: 'rgba(0, 0, 0, 0.35)', borderTop: '1px solid rgba(255, 255, 255, 0.25)', borderBottom: '1px solid rgba(255, 255, 255, 0.25)', textAlign: 'center' }}>
+            <div className="container">
+                <h2 style={{ fontSize: '2.5rem', marginBottom: '16px', color: '#ffffff' }}>Join SDP</h2>
+                <p style={{ fontSize: '1.3rem', maxWidth: '750px', margin: '0 auto 28px', color: '#ffffff', fontWeight: 500, lineHeight: 1.6 }}>
+                    Join us in building a Kenyan society with freedom, equality, justice and solidarity.
+                </p>
+                <Link href="/join-us" className="cta-button">Register &amp; Join Us Today</Link>
             </div>
         </section>
 

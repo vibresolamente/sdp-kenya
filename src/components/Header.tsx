@@ -61,7 +61,7 @@ export default function Header() {
                     <li><Link href="/" className={isActive('/')} onClick={closeNav}>Home</Link></li>
                     <li><Link href="/manifesto" className={isActive('/manifesto')} onClick={closeNav}>Our Plan</Link></li>
                     <li><Link href="/documents" className={isActive('/documents')} onClick={closeNav}>Documents</Link></li>
-                    <li><Link href="/pictures" className={isActive('/pictures')} onClick={closeNav}>Pictures</Link></li>
+                    <li><Link href="/pictures" className={isActive('/pictures')} onClick={closeNav}>Party National Leadership</Link></li>
                     <li><Link href="/forms" className={isActive('/forms')} onClick={closeNav}>Forms</Link></li>
                     <li><Link href="/contact" className={isActive('/contact')} onClick={closeNav}>Contact</Link></li>
                     <li><Link href="/privacy" className={isActive('/privacy')} onClick={closeNav}>Privacy Policy</Link></li>

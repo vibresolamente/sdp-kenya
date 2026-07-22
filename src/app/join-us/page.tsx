@@ -49,7 +49,10 @@ export default function JoinUs() {
   return (
     <section id="join-us" className="content-padding">
         <div className="container">
-            <h1>Join the Movement for <span className="animated-accent">CHANGE - MAGEUZI</span></h1>
+            <h1>Join SDP</h1>
+            <p className="lead" style={{ marginBottom: '30px', color: '#ffffff', fontWeight: 500, textAlign: 'center' }}>
+                Join us in building a Kenyan society with freedom, equality, justice and solidarity.
+            </p>
 
             <div className="contact-grid">
                 

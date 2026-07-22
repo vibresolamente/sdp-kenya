@@ -6,17 +6,17 @@
    1. BASE & VARIABLES (Premium Dark Theme)
    ================================================== */
 :root {
-    --color-bg-dark: #f6fafc;
-    --color-surface-dark: #ffffff;
-    --color-surface-elevated: #f0f4f8;
-    --color-text-light: #1f2329;
-    --color-text-muted: #5c626e;
-    --color-magenta: #ff0090;
-    --color-magenta-glow: rgba(255, 0, 144, 0.15);
+    --color-bg-dark: #d8006f;
+    --color-surface-dark: rgba(0, 0, 0, 0.28);
+    --color-surface-elevated: rgba(0, 0, 0, 0.38);
+    --color-text-light: #ffffff;
+    --color-text-muted: rgba(255, 255, 255, 0.92);
+    --color-magenta: #ff69b4;
+    --color-magenta-glow: rgba(255, 105, 180, 0.4);
     --color-teal: #3bd8f7;
-    --color-teal-glow: rgba(59, 216, 247, 0.15);
-    --color-accent-orange: #3cd070;
-    --color-white: #0f1115;
+    --color-teal-glow: rgba(59, 216, 247, 0.4);
+    --color-accent-orange: #ffeb3b;
+    --color-white: #ffffff;
     --font-heading: 'Montserrat', sans-serif;
     --font-body: 'Roboto', sans-serif;
     --spacing-xl: 100px;
@@ -24,8 +24,8 @@
     --spacing-md: 24px;
     --transition-speed: 0.3s;
     --border-radius: 16px;
-    --glass-bg: rgba(255, 255, 255, 0.7);
-    --glass-border: rgba(0, 0, 0, 0.08);
+    --glass-bg: rgba(0, 0, 0, 0.28);
+    --glass-border: rgba(255, 255, 255, 0.35);
 }
 
 html { scroll-behavior: smooth; }
@@ -34,8 +34,8 @@ html { scroll-behavior: smooth; }
 
 body {
     font-family: var(--font-body);
-    color: var(--color-text-light);
-    background: linear-gradient(135deg, #ffffff 0%, #e6f9ff 50%, #e8fceb 100%);
+    color: #ffffff;
+    background: linear-gradient(135deg, #d8006f 0%, #ff1493 45%, #c40062 100%);
     background-attachment: fixed;
     line-height: 1.7;
     min-height: 100vh;
@@ -44,7 +44,7 @@ body {
 
 h1, h2, h3 {
     font-family: var(--font-heading);
-    color: var(--color-white);
+    color: #ffffff;
     margin-bottom: var(--spacing-md);
     letter-spacing: -0.02em;
 }
@@ -53,26 +53,26 @@ h1 { font-size: 3rem; line-height: 1.15; }
 h2 { font-size: 2rem; }
 h3 { font-size: 1.25rem; }
 
-p { color: var(--color-text-muted); font-size: 1.05rem; }
+p { color: rgba(255, 255, 255, 0.92); font-size: 1.05rem; }
 
 a {
     text-decoration: none;
-    color: var(--color-teal);
+    color: #ffffff;
     transition: color var(--transition-speed), filter var(--transition-speed);
 }
 a:hover { 
-    color: var(--color-magenta);
+    color: #ffeb3b;
     filter: brightness(1.2);
 }
 
 /* Utility Classes */
-.bg-surface { background-color: var(--color-surface-dark); }
-.text-white { color: var(--color-text-light); }
+.bg-surface { background-color: var(--color-surface-dark); border: 1px solid var(--glass-border); }
+.text-white { color: #ffffff !important; }
 .text-center { text-align: center; }
-.highlight-magenta { color: var(--color-magenta); }
+.highlight-magenta { color: #ffffff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); }
 .mt-5 { margin-top: 40px; }
 .font-bold { font-weight: 700; }
-.lead { font-size: 1.2rem; color: var(--color-text-muted); max-width: 700px; margin: 0 auto; }
+.lead { font-size: 1.2rem; color: rgba(255, 255, 255, 0.95); max-width: 700px; margin: 0 auto; }
 
 .container {
     max-width: 1200px;

@@ -19,12 +19,15 @@ export default function Footer() {
                     <p>Email: <a href="mailto:sdpkenya@gmail.com" style={{ color: 'inherit' }}>sdpkenya@gmail.com</a></p>
                     <p>Phone: 0725382047 / 0724484592</p>
                     <p>Website: <a href="https://www.sdpkenya.co.ke" style={{ color: 'inherit' }}>www.sdpkenya.co.ke</a></p>
-                    <p>Official Address: P.O.Box 1131-00606, NAIROBI.</p>
-                    <p style={{ marginTop: '10px' }}><Link href="/privacy" style={{ color: 'var(--color-text-muted)', textDecoration: 'none' }}>Privacy Policy</Link></p>
+                    <p>Official Address: P.O. Box 1559-50100 Kakamega</p>
+                    <p style={{ marginTop: '10px' }}><Link href="/privacy" style={{ color: 'rgba(255, 255, 255, 0.8)', textDecoration: 'none' }}>Privacy Policy</Link></p>
                 </div>
-                <div className="social-links">
-                    <a href="https://x.com/grielishaqj" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i> X</a> |
-                    <a href="https://www.facebook.com/profile.php?id=61591480964798" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i> Facebook</a>
+                <div className="social-links" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                    <a href="https://facebook.com/SDPKenya" target="_blank" rel="noopener noreferrer"><i className="fab fa-facebook-f"></i> Facebook (SDPKenya)</a> |
+                    <a href="https://x.com/SDPKenya" target="_blank" rel="noopener noreferrer"><i className="fab fa-twitter"></i> X (SDPKenya)</a> |
+                    <a href="https://instagram.com/SDPKenya" target="_blank" rel="noopener noreferrer"><i className="fab fa-instagram"></i> Instagram (SDPKenya)</a> |
+                    <a href="https://linkedin.com/company/SDPKenya" target="_blank" rel="noopener noreferrer"><i className="fab fa-linkedin-in"></i> LinkedIn (SDPKenya)</a> |
+                    <a href="https://tiktok.com/@SDPKenya" target="_blank" rel="noopener noreferrer"><i className="fab fa-tiktok"></i> TikTok (SDPKenya)</a>
                 </div>
             </div>
             <p className="copyright">
