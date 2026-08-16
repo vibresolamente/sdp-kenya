@@ -1,0 +1,39 @@
+/* design.css – SDP Kenya Global Design Tokens */
+:root {
+  --color-primary-pink: #c40062;
+  --color-primary-dark-pink: #99004d;
+  --color-primary-deep-pink: #700037;
+  --color-primary-light-pink: #fff0f6;
+  --color-white: #FFFFFF;
+  --color-black: #111111;
+  --color-sky-blue: #3bd8f7;
+  --color-gold: #ffeb3b;
+  --color-bg: #800040;
+  --color-surface: rgba(0, 0, 0, 0.35);
+  --color-text: #ffffff;
+  --color-text-light: #ffffff;
+  --border-radius: 14px;
+  --blur-radius: 12px;
+  --transition-speed: 0.3s;
+}
+
+/* Base Body Setup */
+html, body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #660033 0%, #99004d 45%, #c40062 80%, #55002b 100%);
+  background-attachment: fixed;
+  color: #ffffff;
+  font-family: 'Roboto', 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Glassmorphism Cards */
+.glass {
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}

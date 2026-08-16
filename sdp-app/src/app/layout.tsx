@@ -1,0 +1,51 @@
+import type { Metadata } from "next";
+import { Montserrat, Roboto } from "next/font/google";
+import "./globals.css";
+import "../design.css"; // design system
+import TopBar from '@/components/TopBar';
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+const montserrat = Montserrat({
+  variable: "--font-heading",
+  subsets: ["latin"],
+  weight: ["700"],
+});
+
+const roboto = Roboto({
+  variable: "--font-body",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://sdpkenya.co.ke'),
+  title: "SDP Kenya | CHANGE - MAGEUZI",
+  description: "The Social Democratic Party of Kenya: Dedicated to integrity, opportunity, and the rule of law.",
+};
+
+import { LanguageProvider } from "@/lib/LanguageContext";
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+      </head>
+      <body className={`${montserrat.variable} ${roboto.variable} min-h-screen flex flex-col`}>
+        <LanguageProvider>
+          <Header />
+          <main className="flex-grow">
+            {children}
+          </main>
+          <Footer />
+        </LanguageProvider>
+      </body>
+    </html>
+  );
+}
