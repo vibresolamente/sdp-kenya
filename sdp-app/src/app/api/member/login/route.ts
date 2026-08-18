@@ -3,21 +3,41 @@ import { supabaseServer } from "@/lib/supabaseClient";
 
 export async function POST(request: Request) {
   try {
-    const { id_number, password } = await request.json();
+    const body = await request.json();
+    const identifier = (body.id_number || body.email || body.username || "").trim();
+    const password = (body.password || "").trim();
 
-    if (!id_number || !password) {
+    if (!identifier || !password) {
       return NextResponse.json(
-        { error: "National ID / Passport number and password are required." },
+        { error: "National ID / Passport number (or Email) and password are required." },
         { status: 400 }
       );
     }
 
-    // Look up member by ID number
-    const { data: member, error } = await supabaseServer
+    // Look up member by ID number or email
+    let query = supabaseServer
       .from('members')
-      .select('id, name, id_number, email, county, constituency, ward, category, password')
-      .eq('id_number', id_number.trim())
-      .maybeSingle();
+      .select('id, name, id_number, dob, sex, ethnicity, religion, disability_status, phone, email, physical_address, county, constituency, ward, category, password, created_at');
+
+    let member: any = null;
+    let error: any = null;
+
+    // Try matching id_number first
+    const resId = await query.eq('id_number', identifier).maybeSingle();
+    if (resId.data) {
+      member = resId.data;
+    } else {
+      // Try matching email
+      const resEmail = await supabaseServer
+        .from('members')
+        .select('id, name, id_number, dob, sex, ethnicity, religion, disability_status, phone, email, physical_address, county, constituency, ward, category, password, created_at')
+        .eq('email', identifier)
+        .maybeSingle();
+      if (resEmail.data) {
+        member = resEmail.data;
+      }
+      error = resEmail.error;
+    }
 
     if (error && error.code !== 'PGRST116') {
       console.error("Database error during login:", error);
@@ -26,14 +46,14 @@ export async function POST(request: Request) {
 
     if (!member) {
       return NextResponse.json(
-        { error: "No account found with that National ID / Passport number." },
+        { error: "No member account found with those credentials. Please check your National ID / Email or register." },
         { status: 401 }
       );
     }
 
     if (member.password !== password) {
       return NextResponse.json(
-        { error: "Incorrect password. Please try again." },
+        { error: "Incorrect password. Please verify and try again." },
         { status: 401 }
       );
     }
@@ -45,13 +65,22 @@ export async function POST(request: Request) {
       message:  "Logged in successfully.",
       userId,
       member: {
-        name:         member.name,
-        id_number:    member.id_number,
-        email:        member.email,
-        county:       member.county,
-        constituency: member.constituency,
-        ward:         member.ward,
-        category:     member.category,
+        id:                member.id,
+        name:              member.name,
+        id_number:         member.id_number,
+        dob:               member.dob,
+        sex:               member.sex,
+        ethnicity:         member.ethnicity,
+        religion:          member.religion,
+        disability_status: member.disability_status,
+        phone:             member.phone,
+        email:             member.email,
+        physical_address:  member.physical_address,
+        county:            member.county,
+        constituency:      member.constituency,
+        ward:              member.ward,
+        category:          member.category,
+        created_at:        member.created_at,
       },
     });
 

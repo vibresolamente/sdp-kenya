@@ -4,10 +4,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 export default function JoinUs() {
-  const [status, setStatus]       = useState('');
-  const [error, setError]         = useState('');
-  const [memberCard, setMemberCard] = useState<any>(null);
-  const [loading, setLoading]     = useState(false);
+  const [status, setStatus]             = useState('');
+  const [error, setError]               = useState('');
+  const [memberCard, setMemberCard]     = useState<any>(null);
+  const [loading, setLoading]           = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm]   = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -97,15 +99,16 @@ export default function JoinUs() {
   };
 
   const inputStyle: React.CSSProperties = {
-    color:           '#111111',
+    color:           '#000000',
     backgroundColor: '#ffffff',
-    border:          '1px solid #cbd5e0',
+    border:          '1.5px solid #cbd5e0',
     borderRadius:    '8px',
     padding:         '12px 14px',
     fontSize:        '0.95rem',
     width:           '100%',
     marginBottom:    '14px',
     outline:         'none',
+    fontWeight:      500,
     transition:      'border-color 0.2s ease, box-shadow 0.2s ease',
   };
 
@@ -268,11 +271,11 @@ export default function JoinUs() {
                   {/* SECTION 2 – Personal Particulars */}
                   <span style={sectionLabel}>2. Personal Particulars <span style={{ color: '#ff6b6b' }}>*</span></span>
                   <input type="text"  name="name"      placeholder="Full Legal Name (as per National ID) *"  required style={inputStyle} />
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <input type="text" name="id_number" placeholder="National ID / Passport No. *" required style={inputStyle} />
                     <input type="date" name="dob"       title="Date of Birth *"                    required style={inputStyle} />
                   </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <select name="sex" required style={selectStyle}>
                       <option value="">Select Gender *</option>
                       <option value="Male">Male</option>
@@ -281,19 +284,19 @@ export default function JoinUs() {
                     </select>
                     <input type="text" name="ethnicity" placeholder="Ethnicity / Sector (optional)" style={inputStyle} />
                   </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <input type="text" name="disability_status" placeholder="Disability Status (optional)" style={inputStyle} />
                     <input type="text" name="religion"          placeholder="Religion (optional)"           style={inputStyle} />
                   </div>
 
                   {/* SECTION 3 – Contact & Location */}
                   <span style={sectionLabel}>3. Contact &amp; Residential Location <span style={{ color: '#ff6b6b' }}>*</span></span>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <input type="tel"   name="phone" placeholder="Phone Number * (e.g. 0712345678)" required style={inputStyle} />
                     <input type="email" name="email" placeholder="Email Address"                             style={inputStyle} />
                   </div>
                   <input type="text" name="physical_address" placeholder="Physical / Postal Address (e.g. Kakamega)" style={inputStyle} />
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <input type="text" name="county"        placeholder="County of Residence *"  required style={inputStyle} />
                     <input type="text" name="constituency"  placeholder="Constituency *"          required style={inputStyle} />
                   </div>
@@ -301,25 +304,77 @@ export default function JoinUs() {
 
                   {/* SECTION 4 – Account Password */}
                   <span style={sectionLabel}>4. Create Member Portal Password <span style={{ color: '#ff6b6b' }}>*</span></span>
-                  <p style={{ fontSize: '0.83rem', color: 'rgba(255,255,255,0.7)', marginBottom: '12px', lineHeight: '1.5' }}>
+                  <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.85)', marginBottom: '12px', lineHeight: '1.5' }}>
                     Your <strong>National ID / Passport number</strong> will be your login username. Set a secure password below to access your Member Portal.
                   </p>
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="Create Password (min. 6 characters) *"
-                    required
-                    minLength={6}
-                    style={inputStyle}
-                  />
-                  <input
-                    type="password"
-                    name="confirm_password"
-                    placeholder="Confirm Password *"
-                    required
-                    minLength={6}
-                    style={inputStyle}
-                  />
+                  
+                  <div style={{ position: 'relative', width: '100%', marginBottom: '14px' }}>
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      name="password"
+                      placeholder="Create Password (min. 6 characters) *"
+                      required
+                      minLength={6}
+                      style={{ ...inputStyle, paddingRight: '46px', marginBottom: 0 }}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowPassword(!showPassword)}
+                      style={{
+                        position: 'absolute',
+                        right: '12px',
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
+                        fontSize: '1.15rem',
+                        color: '#4a5568',
+                        padding: '4px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}
+                      title={showPassword ? "Hide password" : "Show password"}
+                      aria-label={showPassword ? "Hide password" : "Show password"}
+                    >
+                      {showPassword ? '👁️' : '🔒'}
+                    </button>
+                  </div>
+
+                  <div style={{ position: 'relative', width: '100%', marginBottom: '14px' }}>
+                    <input
+                      type={showConfirm ? "text" : "password"}
+                      name="confirm_password"
+                      placeholder="Confirm Password *"
+                      required
+                      minLength={6}
+                      style={{ ...inputStyle, paddingRight: '46px', marginBottom: 0 }}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => setShowConfirm(!showConfirm)}
+                      style={{
+                        position: 'absolute',
+                        right: '12px',
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        background: 'none',
+                        border: 'none',
+                        cursor: 'pointer',
+                        fontSize: '1.15rem',
+                        color: '#4a5568',
+                        padding: '4px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}
+                      title={showConfirm ? "Hide password" : "Show password"}
+                      aria-label={showConfirm ? "Hide password" : "Show password"}
+                    >
+                      {showConfirm ? '👁️' : '🔒'}
+                    </button>
+                  </div>
 
                   {/* SECTION 5 – Statutory Declaration */}
                   <span style={sectionLabel}>5. Statutory Declaration</span>

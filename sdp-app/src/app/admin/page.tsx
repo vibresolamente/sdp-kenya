@@ -34,6 +34,7 @@ interface Contact {
 export default function AdminDashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [members, setMembers] = useState<Member[]>([]);
@@ -267,12 +268,14 @@ export default function AdminDashboard() {
   if (!isAuthenticated) {
     return (
       <section className="content-padding flex items-center justify-center" style={{ minHeight: '70vh' }}>
-        <div className="container" style={{ maxWidth: '450px' }}>
-          <div className="manifesto-details bg-surface text-center" style={{ padding: '40px', borderRadius: '16px' }}>
+        <div className="container" style={{ maxWidth: '480px' }}>
+          <div className="manifesto-details bg-surface text-center" style={{ padding: '40px 32px', borderRadius: '16px' }}>
             <h1 style={{ fontSize: '1.8rem', marginBottom: '10px' }}>
               Admin <span className="highlight-magenta animated-accent">Portal</span>
             </h1>
-            <p style={{ marginBottom: '30px' }}>Please enter the administrator credentials to access the secure records.</p>
+            <p style={{ marginBottom: '25px', color: 'rgba(255,255,255,0.9)' }}>
+              Enter the administrator security PIN or Password to access the party register.
+            </p>
             
             <form onSubmit={handleLogin} className="contact-form">
               {/* Hidden username field for accessibility/password-manager compliance */}
@@ -284,20 +287,64 @@ export default function AdminDashboard() {
                 style={{ display: 'none' }} 
                 readOnly 
               />
-              <input 
-                type="password" 
-                name="password"
-                autoComplete="current-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Admin PIN or Password" 
-                required 
-                style={{ textAlign: 'center', fontSize: '1.1rem' }}
-              />
-              {error && <p style={{ color: 'var(--color-magenta)', fontSize: '0.9rem', marginBottom: '15px' }}>{error}</p>}
               
-              <button type="submit" className="cta-button" style={{ width: '100%' }} disabled={loading}>
-                {loading ? 'Authenticating...' : 'Access Dashboard'}
+              <div style={{ position: 'relative', width: '100%', marginBottom: '16px' }}>
+                <input 
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  autoComplete="current-password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter Admin Password" 
+                  required 
+                  style={{
+                    width: '100%',
+                    padding: '14px 48px 14px 16px',
+                    fontSize: '1.05rem',
+                    color: '#000000',
+                    backgroundColor: '#ffffff',
+                    border: '2px solid #cbd5e0',
+                    borderRadius: '10px',
+                    outline: 'none',
+                    fontWeight: 600,
+                    letterSpacing: showPassword ? 'normal' : '2px',
+                    textAlign: 'left',
+                    boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                  }}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{
+                    position: 'absolute',
+                    right: '12px',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'none',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontSize: '1.2rem',
+                    color: '#4a5568',
+                    padding: '4px 8px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}
+                  title={showPassword ? "Hide password" : "Show password"}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? '👁️' : '🔒'}
+                </button>
+              </div>
+
+              {error && (
+                <div style={{ background: 'rgba(255,235,59,0.15)', border: '1px solid rgba(255,235,59,0.4)', borderRadius: '8px', padding: '10px', marginBottom: '15px' }}>
+                  <p style={{ color: '#ffeb3b', fontSize: '0.9rem', margin: 0, fontWeight: 600 }}>⚠️ {error}</p>
+                </div>
+              )}
+              
+              <button type="submit" className="cta-button" style={{ width: '100%', padding: '14px', fontSize: '1rem' }} disabled={loading}>
+                {loading ? '⏳ Authenticating...' : '🔐 Access Admin Dashboard'}
               </button>
             </form>
           </div>
@@ -317,7 +364,7 @@ export default function AdminDashboard() {
             <p>Official Security System | Registered Party Records</p>
           </div>
           <button onClick={handleLogout} className="cta-button" style={{ background: 'linear-gradient(135deg, #444, #222)', boxShadow: 'none' }}>
-            Secure Logout
+            🚪 Secure Logout
           </button>
         </div>
 
@@ -341,7 +388,7 @@ export default function AdminDashboard() {
         <div className="bg-surface" style={{ padding: '24px', borderRadius: '12px', marginTop: '30px', border: '1px solid var(--glass-border)' }}>
           <div style={{ display: 'flex', gap: '15px', flexWrap: 'wrap' }}>
             <div style={{ flex: '1', minWidth: '250px' }}>
-              <label style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', display: 'block', marginBottom: '6px' }}>Search Records</label>
+              <label style={{ fontSize: '0.85rem', color: '#ffffff', fontWeight: 600, display: 'block', marginBottom: '6px' }}>Search Records</label>
               <input 
                 type="text" 
                 value={searchTerm}
@@ -349,29 +396,36 @@ export default function AdminDashboard() {
                 placeholder="Search by name, ID number, phone, email..."
                 style={{
                   width: '100%',
-                  padding: '10px 14px',
+                  padding: '12px 16px',
                   borderRadius: '8px',
-                  background: 'rgba(0,0,0,0.02)',
-                  border: '1px solid rgba(0,0,0,0.08)',
-                  color: 'var(--color-text-light)'
+                  background: '#ffffff',
+                  border: '1.5px solid #cbd5e0',
+                  color: '#000000',
+                  fontSize: '0.95rem',
+                  fontWeight: 500,
+                  outline: 'none'
                 }}
               />
             </div>
             
             {activeTab === 'members' && counties.length > 0 && (
-              <div style={{ width: '200px' }}>
-                <label style={{ fontSize: '0.85rem', color: 'var(--color-text-muted)', display: 'block', marginBottom: '6px' }}>Filter by County</label>
+              <div style={{ width: '220px' }}>
+                <label style={{ fontSize: '0.85rem', color: '#ffffff', fontWeight: 600, display: 'block', marginBottom: '6px' }}>Filter by County</label>
                 <select
                   value={countyFilter}
                   onChange={(e) => setCountyFilter(e.target.value)}
                   style={{
                     width: '100%',
-                    padding: '10px 14px',
+                    padding: '12px 14px',
                     borderRadius: '8px',
-                    background: 'var(--color-surface-elevated)',
-                    border: '1px solid rgba(0,0,0,0.08)',
-                    color: 'var(--color-text-light)',
-                    height: '42px'
+                    background: '#ffffff',
+                    border: '1.5px solid #cbd5e0',
+                    color: '#000000',
+                    fontSize: '0.95rem',
+                    fontWeight: 500,
+                    height: '46px',
+                    cursor: 'pointer',
+                    outline: 'none'
                   }}
                 >
                   <option value="">All Counties</option>

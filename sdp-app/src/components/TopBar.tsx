@@ -16,8 +16,8 @@ export default function TopBar() {
           <Link href="?lang=en"><span style={{ color: 'var(--color-text-light)' }}>English</span></Link> |
           <Link href="?lang=sw"><span style={{ color: 'var(--color-text-light)' }}>Kiswahili</span></Link>
         </div>
-        <Link href="/member/login">
-          <a className="join-btn" style={{ background: 'var(--color-primary-light-pink)', color: 'var(--color-primary-pink)', padding: '0.3rem 0.6rem', borderRadius: '4px' }}>Member Login</a>
+        <Link href="/member/login" className="join-btn" style={{ background: 'var(--color-primary-light-pink)', color: 'var(--color-primary-pink)', padding: '0.3rem 0.6rem', borderRadius: '4px' }}>
+          Member Login
         </Link>
       </div>
     </div>
