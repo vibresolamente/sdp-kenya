@@ -2,6 +2,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getMemberById } from '@/lib/db';
 import Link from 'next/link';
+import MembershipCard from '@/components/MembershipCard';
 
 export default async function MemberDashboard() {
   const cookieStore = cookies();
@@ -88,69 +89,22 @@ export default async function MemberDashboard() {
           {/* Main 2-Column Grid */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '28px', marginBottom: '36px' }}>
             
-            {/* ── LEFT: Digital Membership Card ── */}
+            {/* ── LEFT: Digital Membership Card with HD Download & Print ── */}
             <div className="bg-surface" style={{ padding: '28px', borderRadius: '16px', textAlign: 'center' }}>
               <h3 style={{ color: '#ffeb3b', fontSize: '1.2rem', marginBottom: '16px' }}>
                 💳 Official Digital Membership Card
               </h3>
 
-              <div style={{
-                background: 'linear-gradient(135deg, #800040 0%, #c40062 50%, #4a0026 100%)',
-                borderRadius: '16px',
-                padding: '24px',
-                color: '#ffffff',
-                textAlign: 'left',
-                boxShadow: '0 12px 35px rgba(0,0,0,0.5)',
-                border: '1.5px solid rgba(255,255,255,0.3)',
-                maxWidth: '400px',
-                margin: '0 auto 20px',
-                position: 'relative',
-                overflow: 'hidden',
-              }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                  <div>
-                    <span style={{ fontWeight: 900, fontSize: '1.2rem', letterSpacing: '1.5px', color: '#ffffff' }}>SDP KENYA</span>
-                    <div style={{ fontSize: '0.65rem', color: '#ffeb3b', fontWeight: 700, letterSpacing: '1px' }}>SOCIAL DEMOCRATIC PARTY</div>
-                  </div>
-                  <span style={{ fontSize: '0.68rem', background: '#3cd070', color: '#000000', padding: '3px 8px', borderRadius: '12px', fontWeight: 800 }}>
-                    IPPMS VERIFIED
-                  </span>
-                </div>
-
-                <div style={{ borderTop: '1px solid rgba(255,255,255,0.2)', borderBottom: '1px solid rgba(255,255,255,0.2)', padding: '12px 0', margin: '12px 0' }}>
-                  <p style={{ fontSize: '0.7rem', opacity: 0.8, margin: 0, textTransform: 'uppercase' }}>Member Name:</p>
-                  <p style={{ fontSize: '1.1rem', fontWeight: 800, margin: '0 0 6px', color: '#ffffff' }}>{memberData.name}</p>
-                  
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', fontSize: '0.8rem' }}>
-                    <div>
-                      <span style={{ opacity: 0.75, display: 'block', fontSize: '0.68rem' }}>ID / Passport:</span>
-                      <strong>{memberData.id_number}</strong>
-                    </div>
-                    <div>
-                      <span style={{ opacity: 0.75, display: 'block', fontSize: '0.68rem' }}>Member Ref:</span>
-                      <strong style={{ color: '#ffeb3b' }}>{memberIdCode}</strong>
-                    </div>
-                    <div>
-                      <span style={{ opacity: 0.75, display: 'block', fontSize: '0.68rem' }}>County / Ward:</span>
-                      <span>{memberData.county || '—'} · {memberData.ward || '—'}</span>
-                    </div>
-                    <div>
-                      <span style={{ opacity: 0.75, display: 'block', fontSize: '0.68rem' }}>Category:</span>
-                      <span>{memberData.category || 'Ordinary Member'}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', fontSize: '0.68rem', opacity: 0.85 }}>
-                  <div>
-                    <span>Statutory Compliance: Political Parties Act, 2011</span>
-                    <div style={{ marginTop: '2px' }}>P.O. Box 1559-50100 Kakamega</div>
-                  </div>
-                  <div style={{ textAlign: 'right', fontWeight: 700, color: '#3bd8f7' }}>
-                    SDP-OFFICIAL
-                  </div>
-                </div>
-              </div>
+              <MembershipCard
+                name={memberData.name}
+                idNumber={memberData.id_number}
+                memberRef={memberIdCode}
+                category={memberData.category}
+                county={memberData.county}
+                constituency={memberData.constituency}
+                ward={memberData.ward}
+                issueDate={new Date(memberData.created_at).toLocaleDateString('en-GB')}
+              />
 
               <div className="official-record mt-4" style={{ background: 'rgba(60, 208, 112, 0.1)', borderLeft: '4px solid #3cd070', padding: '14px', textAlign: 'left' }}>
                 <p style={{ color: '#3cd070', fontWeight: 700, margin: '0 0 4px', fontSize: '0.9rem' }}>✓ IPPMS Statutory Transmission Ready</p>

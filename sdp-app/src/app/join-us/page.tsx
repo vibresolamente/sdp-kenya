@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import MembershipCard from '@/components/MembershipCard';
 
 export default function JoinUs() {
   const [status, setStatus]             = useState('');
@@ -207,35 +208,20 @@ export default function JoinUs() {
                   You can now log in to your Member Portal.
                 </p>
 
-                {/* Digital Membership Card */}
-                <div style={{
-                  background:   'linear-gradient(135deg, #99004d 0%, #c40062 50%, #660033 100%)',
-                  padding:      '28px',
-                  borderRadius: '18px',
-                  color:        '#ffffff',
-                  textAlign:    'left',
-                  boxShadow:    '0 12px 40px rgba(0,0,0,0.6)',
-                  border:       '1px solid rgba(255,255,255,0.3)',
-                  maxWidth:     '420px',
-                  margin:       '0 auto 28px',
-                }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px' }}>
-                    <span style={{ fontWeight: 900, fontSize: '1.3rem', letterSpacing: '2px' }}>SDP KENYA</span>
-                    <span style={{ fontSize: '0.72rem', background: 'rgba(255,255,255,0.2)', padding: '3px 10px', borderRadius: '20px', fontWeight: 700 }}>IPPMS VERIFIED</span>
-                  </div>
-                  <p style={{ fontSize: '0.75rem', opacity: 0.8, marginBottom: '4px' }}>MEMBER REGISTRATION ID:</p>
-                  <p style={{ fontSize: '1.5rem', fontWeight: 900, color: '#ffeb3b', letterSpacing: '2px', marginBottom: '18px' }}>{memberCard.id}</p>
-                  <div style={{ fontSize: '0.88rem', lineHeight: '1.7', borderTop: '1px solid rgba(255,255,255,0.2)', paddingTop: '14px' }}>
-                    <p><strong>Name:</strong> {memberCard.name}</p>
-                    <p><strong>ID / Passport:</strong> {memberCard.id_number}</p>
-                    <p><strong>Category:</strong> {memberCard.category}</p>
-                    <p><strong>County:</strong> {memberCard.county} &nbsp;|&nbsp; <strong>Ward:</strong> {memberCard.ward}</p>
-                    <p><strong>Issued:</strong> {memberCard.date}</p>
-                    <p><strong>Head Office:</strong> P.O. Box 1559-50100 Kakamega</p>
-                  </div>
+                <div style={{ margin: '20px 0 28px' }}>
+                  <MembershipCard
+                    name={memberCard.name}
+                    idNumber={memberCard.id_number}
+                    memberRef={memberCard.id}
+                    category={memberCard.category}
+                    county={memberCard.county}
+                    constituency={memberCard.constituency}
+                    ward={memberCard.ward}
+                    issueDate={memberCard.date}
+                  />
                 </div>
 
-                <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <div className="no-print" style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '20px' }}>
                   <Link href="/membership" className="cta-button" style={{ fontSize: '0.9rem' }}>
                     🔐 Login to Member Portal
                   </Link>

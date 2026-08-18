@@ -1280,3 +1280,54 @@ body.high-contrast .contact-form textarea {
     pointer-events: none;
     opacity: 0.5;
 }
+
+/* ==================================================
+   15. PRINT STYLES FOR DIGITAL MEMBERSHIP CARD
+   ================================================== */
+@media print {
+    *, *:before, *:after {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    html, body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+    /* Hide surrounding navigation, footers, and clutter during print */
+    .site-header,
+    .main-footer,
+    .hero-section,
+    .no-print,
+    header,
+    footer,
+    nav,
+    .top-utility-bar,
+    .main-nav-bar,
+    .header-controls,
+    .mobile-menu-toggle {
+        display: none !important;
+    }
+
+    .membership-card-component {
+        margin: 40px auto !important;
+        max-width: 520px !important;
+        page-break-inside: avoid !important;
+    }
+
+    .membership-card-visual {
+        box-shadow: none !important;
+        border: 2px solid #c40062 !important;
+        page-break-inside: avoid !important;
+        margin: 0 auto !important;
+        max-width: 500px !important;
+        width: 100% !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}

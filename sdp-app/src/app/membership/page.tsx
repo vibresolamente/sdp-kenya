@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import MembershipCard from '@/components/MembershipCard';
 
 export default function MembershipPage() {
   // ── Portal state ──────────────────────────────────────────
@@ -198,78 +199,25 @@ export default function MembershipPage() {
             {/* Main Portal 2-Column Section */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px', marginBottom: '40px' }}>
 
-              {/* ── LEFT: Digital Membership Card ── */}
+              {/* ── LEFT: Digital Membership Card with HD Download & Print ── */}
               <div className="bg-surface" style={{ padding: '30px', borderRadius: '18px', textAlign: 'center' }}>
                 <h3 style={{ color: '#ffeb3b', fontSize: '1.25rem', marginBottom: '16px' }}>
                   💳 Official Digital Membership Card
                 </h3>
                 
-                {/* Visual Card Container */}
-                <div id="printable-membership-card" style={{
-                  background:   'linear-gradient(135deg, #800040 0%, #c40062 50%, #4a0026 100%)',
-                  borderRadius: '16px',
-                  padding:      '24px',
-                  color:        '#ffffff',
-                  textAlign:    'left',
-                  boxShadow:    '0 12px 35px rgba(0,0,0,0.5)',
-                  border:       '1.5px solid rgba(255,255,255,0.3)',
-                  maxWidth:     '420px',
-                  margin:       '0 auto 20px',
-                  position:     'relative',
-                  overflow:     'hidden',
-                }}>
-                  {/* Card Background Watermark */}
-                  <div style={{ position: 'absolute', right: '-20px', bottom: '-20px', fontSize: '8rem', opacity: 0.08, fontWeight: 900, pointerEvents: 'none' }}>
-                    SDP
-                  </div>
+                <MembershipCard
+                  name={member.name}
+                  idNumber={member.id_number}
+                  memberRef={memberIdCode}
+                  category={member.category}
+                  county={member.county}
+                  constituency={member.constituency}
+                  ward={member.ward}
+                  onPrint={handlePrintCard}
+                />
 
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-                    <div>
-                      <span style={{ fontWeight: 900, fontSize: '1.25rem', letterSpacing: '1.5px', color: '#ffffff' }}>SDP KENYA</span>
-                      <div style={{ fontSize: '0.68rem', color: '#ffeb3b', fontWeight: 700, letterSpacing: '1px' }}>SOCIAL DEMOCRATIC PARTY</div>
-                    </div>
-                    <span style={{ fontSize: '0.7rem', background: '#3cd070', color: '#000000', padding: '3px 8px', borderRadius: '12px', fontWeight: 800 }}>
-                      IPPMS VERIFIED
-                    </span>
-                  </div>
-
-                  <div style={{ borderTop: '1px solid rgba(255,255,255,0.2)', borderBottom: '1px solid rgba(255,255,255,0.2)', padding: '12px 0', margin: '12px 0' }}>
-                    <p style={{ fontSize: '0.72rem', opacity: 0.8, margin: 0, textTransform: 'uppercase' }}>Member Name:</p>
-                    <p style={{ fontSize: '1.1rem', fontWeight: 800, margin: '0 0 6px', color: '#ffffff' }}>{member.name}</p>
-                    
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', fontSize: '0.82rem' }}>
-                      <div>
-                        <span style={{ opacity: 0.75, display: 'block', fontSize: '0.7rem' }}>ID / Passport:</span>
-                        <strong>{member.id_number}</strong>
-                      </div>
-                      <div>
-                        <span style={{ opacity: 0.75, display: 'block', fontSize: '0.7rem' }}>Member Ref:</span>
-                        <strong style={{ color: '#ffeb3b' }}>{memberIdCode}</strong>
-                      </div>
-                      <div>
-                        <span style={{ opacity: 0.75, display: 'block', fontSize: '0.7rem' }}>County / Ward:</span>
-                        <span>{member.county || 'Nairobi'} · {member.ward || 'Central'}</span>
-                      </div>
-                      <div>
-                        <span style={{ opacity: 0.75, display: 'block', fontSize: '0.7rem' }}>Category:</span>
-                        <span>{member.category || 'Ordinary Member'}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', fontSize: '0.7rem', opacity: 0.85 }}>
-                    <div>
-                      <span>Statutory Compliance: Political Parties Act, 2011</span>
-                      <div style={{ marginTop: '2px' }}>P.O. Box 1559-50100 Kakamega</div>
-                    </div>
-                    <div style={{ textAlign: 'right', fontWeight: 700, color: '#3bd8f7' }}>
-                      SDP-OFFICIAL
-                    </div>
-                  </div>
-                </div>
-
-                <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.8)' }}>
-                  This credential confirms your listing on the SDP Statutory Membership Register compliant with the ORPP.
+                <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.8)', marginTop: '16px' }}>
+                  This credential confirms your official listing on the SDP Statutory Membership Register compliant with the ORPP.
                 </p>
               </div>
 
