@@ -1,0 +1,32 @@
+{
+  "name": "sdp-kenya",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix sdp-app run dev",
+    "build": "npm --prefix sdp-app run build",
+    "vercel-build": "npm --prefix sdp-app run build",
+    "start": "npm --prefix sdp-app start",
+    "lint": "npm --prefix sdp-app run lint"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "@supabase/supabase-js": "^2.49.1",
+    "nodemailer": "^6.10.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "next": "14.2.15"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/nodemailer": "^6.4.17",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.15",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5"
+  }
+}

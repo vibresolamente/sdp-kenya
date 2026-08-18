@@ -24,6 +24,110 @@ export default function Home() {
             </div>
         </section>
 
+        {/* SECTION: OFFICIAL PARTY IDENTITY & STATUTORY SYMBOLS */}
+        <section id="party-identity" className="content-padding" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(100,0,50,0.4) 100%)', borderTop: '3px solid #ff0090', borderBottom: '3px solid #00bfff' }}>
+            <div className="container">
+                <div className="text-center" style={{ marginBottom: '36px' }}>
+                    <span style={{ background: 'rgba(255,255,255,0.15)', color: '#ffeb3b', padding: '4px 14px', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase' }}>
+                      Official Party Identity
+                    </span>
+                    <h2 style={{ fontSize: '2.5rem', marginTop: '12px', marginBottom: '8px', color: '#ffffff', fontWeight: 900 }}>
+                      SDP Kenya Statutory <span className="animated-accent">Identity &amp; Symbols</span>
+                    </h2>
+                    <p className="lead" style={{ maxWidth: '750px', margin: '0 auto', color: 'rgba(255,255,255,0.9)' }}>
+                      Registered under the Political Parties Act, 2011 &amp; ORPP statutory regulatory guidelines.
+                    </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    {/* 1. Ideology */}
+                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)' }}>
+                        <div style={{ fontSize: '2.5rem', marginBottom: '10px' }}>⚖️</div>
+                        <span style={{ fontSize: '0.78rem', color: '#ffeb3b', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>1. Party Ideology</span>
+                        <h3 style={{ fontSize: '1.35rem', color: '#ffffff', marginTop: '6px', marginBottom: '8px', fontWeight: 800 }}>Democratic Socialism</h3>
+                        <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.85)', lineHeight: '1.6' }}>
+                          Committed to social justice, freedom, equality, people-centered economic democracy, and national solidarity.
+                        </p>
+                    </div>
+
+                    {/* 2. Symbol */}
+                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)' }}>
+                        <div style={{
+                            width: '56px',
+                            height: '56px',
+                            borderRadius: '50%',
+                            border: '3px solid #ff0090',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            margin: '0 auto 10px',
+                            fontWeight: 900,
+                            fontSize: '1.1rem',
+                            color: '#ffffff',
+                            background: 'rgba(255,0,144,0.15)'
+                        }}>
+                            SDP
+                        </div>
+                        <span style={{ fontSize: '0.78rem', color: '#3bd8f7', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>2. Official Symbol</span>
+                        <h3 style={{ fontSize: '1.35rem', color: '#ffffff', marginTop: '6px', marginBottom: '8px', fontWeight: 800 }}>SDP (Inside a Circle)</h3>
+                        <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.85)', lineHeight: '1.6' }}>
+                          The acronym <strong>SDP</strong> enclosed inside a circular crest, representing unity, integrity, and collective power.
+                        </p>
+                    </div>
+
+                    {/* 3. Slogan */}
+                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)' }}>
+                        <div style={{ fontSize: '2.5rem', marginBottom: '10px' }}>📢</div>
+                        <span style={{ fontSize: '0.78rem', color: '#ff69b4', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>3. Official Slogan</span>
+                        <h3 style={{ fontSize: '1.35rem', color: '#ff0090', marginTop: '6px', marginBottom: '8px', fontWeight: 900 }}>Change – Mageuzi</h3>
+                        <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.85)', lineHeight: '1.6' }}>
+                          The clarion call for structural transformation and progressive political renewal across Kenya.
+                        </p>
+                    </div>
+
+                    {/* 4. Motto */}
+                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)' }}>
+                        <div style={{ fontSize: '2.5rem', marginBottom: '10px' }}>⏳</div>
+                        <span style={{ fontSize: '0.78rem', color: '#3cd070', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>4. Official Motto</span>
+                        <h3 style={{ fontSize: '1.35rem', color: '#3cd070', marginTop: '6px', marginBottom: '8px', fontWeight: 800 }}>Time Has Come – Wakati Umefika</h3>
+                        <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.85)', lineHeight: '1.6' }}>
+                          The moment for revolutionary democratic advancement and righteous citizen governance is now.
+                        </p>
+                    </div>
+
+                    {/* 5. Salute */}
+                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)' }}>
+                        <div style={{ fontSize: '2.5rem', marginBottom: '10px' }}>✋</div>
+                        <span style={{ fontSize: '0.78rem', color: '#3bd8f7', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>5. Official Salute</span>
+                        <h3 style={{ fontSize: '1.35rem', color: '#ffffff', marginTop: '6px', marginBottom: '8px', fontWeight: 800 }}>Open Hand and Palm Raised</h3>
+                        <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.85)', lineHeight: '1.6' }}>
+                          Raised open palm symbolising peace, transparency, brotherhood, honesty, and openness to all people.
+                        </p>
+                    </div>
+
+                    {/* 6. Colours */}
+                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)' }}>
+                        <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginBottom: '10px' }}>
+                            <span style={{ width: '22px', height: '22px', borderRadius: '50%', background: '#ff0090', border: '2px solid #ffffff' }} title="Pink"></span>
+                            <span style={{ width: '22px', height: '22px', borderRadius: '50%', background: '#ffffff', border: '2px solid #cbd5e0' }} title="White"></span>
+                            <span style={{ width: '22px', height: '22px', borderRadius: '50%', background: '#00bfff', border: '2px solid #ffffff' }} title="Bold Skyblue"></span>
+                        </div>
+                        <span style={{ fontSize: '0.78rem', color: '#ffeb3b', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>6. Official Colours</span>
+                        <h3 style={{ fontSize: '1.35rem', color: '#ffffff', marginTop: '6px', marginBottom: '8px', fontWeight: 800 }}>
+                          <span style={{ color: '#ff0090' }}>Pink</span>, <span style={{ color: '#ffffff' }}>White</span> &amp; <span style={{ color: '#00bfff' }}>Bold Skyblue</span>
+                        </h3>
+                        <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', flexWrap: 'wrap', marginTop: '8px' }}>
+                            <span style={{ background: '#ff0090', color: '#ffffff', padding: '3px 10px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 700 }}>Pink</span>
+                            <span style={{ background: '#ffffff', color: '#000000', padding: '3px 10px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 800 }}>White</span>
+                            <span style={{ background: '#00bfff', color: '#000000', padding: '3px 10px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 800 }}>Bold Skyblue</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         {/* SECTION: JOIN SDP SPACE */}
         <section className="join-sdp-banner content-padding" style={{ background: 'rgba(0, 0, 0, 0.4)', borderTop: '2px solid #ff1493', borderBottom: '2px solid #ff1493', textAlign: 'center' }}>
             <div className="container">
