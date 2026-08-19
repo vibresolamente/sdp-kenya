@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { BrandInfo } from '@/components/BrandInfo';
 
 export default function AboutSDP() {
   return (
@@ -19,8 +18,6 @@ export default function AboutSDP() {
             <p style={{ lineHeight: '1.7', color: 'rgba(255,255,255,0.92)', marginBottom: '20px' }}>
               The <strong>Social Democratic Party of Kenya (SDP)</strong> is a national political party registered under the Political Parties Act, 2011. Founded on the bedrock principles of <strong>Democratic Socialism</strong>, the SDP is dedicated to championing the rights of everyday Kenyans, restoring economic sovereignty, and ensuring uncompromising democratic accountability.
             </p>
-
-            <BrandInfo />
 
             <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', marginTop: '30px', flexWrap: 'wrap' }}>
               <Link href="/join-us" className="cta-button">

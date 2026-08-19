@@ -278,15 +278,6 @@ export default function AdminDashboard() {
             </p>
             
             <form onSubmit={handleLogin} className="contact-form">
-              {/* Hidden username field for accessibility/password-manager compliance */}
-              <input 
-                type="text" 
-                name="username" 
-                autoComplete="username" 
-                value="admin" 
-                style={{ display: 'none' }} 
-                readOnly 
-              />
               
               <div style={{ position: 'relative', width: '100%', marginBottom: '16px' }}>
                 <input 

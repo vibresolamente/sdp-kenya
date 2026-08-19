@@ -42,7 +42,7 @@ export default function Home() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     
                     {/* 1. Ideology */}
-                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)' }}>
+                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center slide-in-left" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animationDelay: '0ms' }}>
                         <div style={{ fontSize: '2.5rem', marginBottom: '10px' }}>⚖️</div>
                         <span style={{ fontSize: '0.78rem', color: '#ffeb3b', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>1. Party Ideology</span>
                         <h3 style={{ fontSize: '1.35rem', color: '#ffffff', marginTop: '6px', marginBottom: '8px', fontWeight: 800 }}>Democratic Socialism</h3>
@@ -52,7 +52,7 @@ export default function Home() {
                     </div>
 
                     {/* 2. Symbol */}
-                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)' }}>
+                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center slide-in-left" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animationDelay: '150ms' }}>
                         <div style={{
                             width: '56px',
                             height: '56px',
@@ -77,7 +77,7 @@ export default function Home() {
                     </div>
 
                     {/* 3. Slogan */}
-                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)' }}>
+                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center slide-in-left" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animationDelay: '300ms' }}>
                         <div style={{ fontSize: '2.5rem', marginBottom: '10px' }}>📢</div>
                         <span style={{ fontSize: '0.78rem', color: '#ff69b4', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>3. Official Slogan</span>
                         <h3 style={{ fontSize: '1.35rem', color: '#ff0090', marginTop: '6px', marginBottom: '8px', fontWeight: 900 }}>Change – Mageuzi</h3>
@@ -87,7 +87,7 @@ export default function Home() {
                     </div>
 
                     {/* 4. Motto */}
-                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)' }}>
+                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center slide-in-left" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animationDelay: '450ms' }}>
                         <div style={{ fontSize: '2.5rem', marginBottom: '10px' }}>⏳</div>
                         <span style={{ fontSize: '0.78rem', color: '#3cd070', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>4. Official Motto</span>
                         <h3 style={{ fontSize: '1.35rem', color: '#3cd070', marginTop: '6px', marginBottom: '8px', fontWeight: 800 }}>Time Has Come – Wakati Umefika</h3>
@@ -97,7 +97,7 @@ export default function Home() {
                     </div>
 
                     {/* 5. Salute */}
-                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)' }}>
+                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center slide-in-left" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animationDelay: '600ms' }}>
                         <div style={{ fontSize: '2.5rem', marginBottom: '10px' }}>✋</div>
                         <span style={{ fontSize: '0.78rem', color: '#3bd8f7', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>5. Official Salute</span>
                         <h3 style={{ fontSize: '1.35rem', color: '#ffffff', marginTop: '6px', marginBottom: '8px', fontWeight: 800 }}>Open Hand and Palm Raised</h3>
@@ -107,7 +107,7 @@ export default function Home() {
                     </div>
 
                     {/* 6. Colours */}
-                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)' }}>
+                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center slide-in-left" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animationDelay: '750ms' }}>
                         <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginBottom: '10px' }}>
                             <span style={{ width: '22px', height: '22px', borderRadius: '50%', background: '#ff0090', border: '2px solid #ffffff' }} title="Pink"></span>
                             <span style={{ width: '22px', height: '22px', borderRadius: '50%', background: '#ffffff', border: '2px solid #cbd5e0' }} title="White"></span>
