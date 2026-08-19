@@ -34,8 +34,8 @@ export default function Home() {
         </section>
 
         {/* SECTION: OFFICIAL PARTY IDENTITY & STATUTORY SYMBOLS */}
-        <section id="party-identity" className="content-padding" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(100,0,50,0.4) 100%)', borderTop: '3px solid #ff0090', borderBottom: '3px solid #00bfff' }}>
-            <div className="container">
+        <section id="party-identity" className="content-padding fade-in-up" style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(100,0,50,0.4) 100%)', borderTop: '3px solid #ff0090', borderBottom: '3px solid #00bfff', animationDelay: '0.5s' }}>
+            <div className="container fade-in-up">
                 <div className="text-center" style={{ marginBottom: '36px' }}>
                     <span style={{ background: 'rgba(255,255,255,0.15)', color: '#ffeb3b', padding: '4px 14px', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 800, letterSpacing: '1px', textTransform: 'uppercase' }}>
                       Official Party Identity
