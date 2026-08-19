@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/lib/LanguageContext';
 
@@ -48,7 +48,7 @@ export default function Home() {
                     </p>
                 </div>
 
-                <div style={{ position: 'relative', width: '100%', overflow: 'hidden', padding: '20px 0' }}>
+                <div className="fade-in-up" style={{ position: 'relative', width: '100%', overflow: 'hidden', padding: '20px 0' }}>
                     <div style={{
                         display: 'flex',
                         transition: 'transform 1000ms cubic-bezier(0.4, 0, 0.2, 1)',
