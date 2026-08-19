@@ -1,10 +1,19 @@
 "use client";
 
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/lib/LanguageContext';
 
 export default function Home() {
   const { t } = useLanguage();
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % 6);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
@@ -39,91 +48,183 @@ export default function Home() {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    
-                    {/* 1. Ideology */}
-                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center slide-in-left" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animationDelay: '0ms' }}>
-                        <div style={{ fontSize: '2.5rem', marginBottom: '10px' }}>⚖️</div>
-                        <span style={{ fontSize: '0.78rem', color: '#ffeb3b', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>1. Party Ideology</span>
-                        <h3 style={{ fontSize: '1.35rem', color: '#ffffff', marginTop: '6px', marginBottom: '8px', fontWeight: 800 }}>Democratic Socialism</h3>
-                        <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.85)', lineHeight: '1.6' }}>
-                          Committed to social justice, freedom, equality, people-centered economic democracy, and national solidarity.
-                        </p>
+                <div style={{ position: 'relative', width: '100%', overflow: 'hidden', padding: '20px 0' }}>
+                    <div style={{
+                        display: 'flex',
+                        transition: 'transform 1000ms cubic-bezier(0.4, 0, 0.2, 1)',
+                        transform: `translateX(-${activeSlide * 100}%)`,
+                        width: '100%'
+                    }}>
+                        
+                        {/* Slide 1: Ideology */}
+                        <div style={{ flex: '0 0 100%', width: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
+                            <div className="bg-surface p-8 rounded-2xl border border-white/20 text-center" style={{ maxWidth: '600px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animation: 'slideInLeft 1s ease-out forwards', animationDelay: '0s' }}>
+                                <div style={{ fontSize: '3rem', marginBottom: '12px' }}>⚖️</div>
+                                <span style={{ fontSize: '0.85rem', color: '#ffeb3b', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>1. Party Ideology</span>
+                                <h3 style={{ fontSize: '1.6rem', color: '#ffffff', marginTop: '8px', marginBottom: '12px', fontWeight: 800 }}>Democratic Socialism</h3>
+                                <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.85)', lineHeight: '1.7' }}>
+                                  Committed to social justice, freedom, equality, people-centered economic democracy, and national solidarity.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Slide 2: Symbol */}
+                        <div style={{ flex: '0 0 100%', width: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
+                            <div className="bg-surface p-8 rounded-2xl border border-white/20 text-center" style={{ maxWidth: '600px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animation: 'slideInLeft 1s ease-out forwards', animationDelay: '0.2s' }}>
+                                <div style={{
+                                    width: '72px',
+                                    height: '72px',
+                                    borderRadius: '50%',
+                                    border: '3px solid #ff0090',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    margin: '0 auto 12px',
+                                    fontWeight: 900,
+                                    fontSize: '1.3rem',
+                                    color: '#ffffff',
+                                    background: 'rgba(255,0,144,0.15)'
+                                }}>
+                                    SDP
+                                </div>
+                                <span style={{ fontSize: '0.85rem', color: '#3bd8f7', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>2. Official Symbol</span>
+                                <h3 style={{ fontSize: '1.6rem', color: '#ffffff', marginTop: '8px', marginBottom: '12px', fontWeight: 800 }}>SDP (Inside a Circle)</h3>
+                                <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.85)', lineHeight: '1.7' }}>
+                                  The acronym <strong>SDP</strong> enclosed inside a circular crest, representing unity, integrity, and collective power.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Slide 3: Slogan */}
+                        <div style={{ flex: '0 0 100%', width: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
+                            <div className="bg-surface p-8 rounded-2xl border border-white/20 text-center" style={{ maxWidth: '600px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animation: 'slideInLeft 1s ease-out forwards', animationDelay: '0.4s' }}>
+                                <div style={{ fontSize: '3rem', marginBottom: '12px' }}>📢</div>
+                                <span style={{ fontSize: '0.85rem', color: '#ff69b4', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>3. Official Slogan</span>
+                                <h3 style={{ fontSize: '1.6rem', color: '#ff0090', marginTop: '8px', marginBottom: '12px', fontWeight: 900 }}>Change – Mageuzi</h3>
+                                <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.85)', lineHeight: '1.7' }}>
+                                  The clarion call for structural transformation and progressive political renewal across Kenya.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Slide 4: Motto */}
+                        <div style={{ flex: '0 0 100%', width: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
+                            <div className="bg-surface p-8 rounded-2xl border border-white/20 text-center" style={{ maxWidth: '600px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animation: 'slideInLeft 1s ease-out forwards', animationDelay: '0.6s' }}>
+                                <div style={{ fontSize: '3rem', marginBottom: '12px' }}>⏳</div>
+                                <span style={{ fontSize: '0.85rem', color: '#3cd070', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>4. Official Motto</span>
+                                <h3 style={{ fontSize: '1.6rem', color: '#3cd070', marginTop: '8px', marginBottom: '12px', fontWeight: 800 }}>Time Has Come – Wakati Umefika</h3>
+                                <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.85)', lineHeight: '1.7' }}>
+                                  The moment for revolutionary democratic advancement and righteous citizen governance is now.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Slide 5: Salute */}
+                        <div style={{ flex: '0 0 100%', width: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
+                            <div className="bg-surface p-8 rounded-2xl border border-white/20 text-center" style={{ maxWidth: '600px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animation: 'slideInLeft 1s ease-out forwards', animationDelay: '0.8s' }}>
+                                <div style={{ fontSize: '3rem', marginBottom: '12px' }}>✋</div>
+                                <span style={{ fontSize: '0.85rem', color: '#3bd8f7', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>5. Official Salute</span>
+                                <h3 style={{ fontSize: '1.6rem', color: '#ffffff', marginTop: '8px', marginBottom: '12px', fontWeight: 800 }}>Open Hand and Palm Raised</h3>
+                                <p style={{ fontSize: '1.05rem', color: 'rgba(255,255,255,0.85)', lineHeight: '1.7' }}>
+                                  Raised open palm symbolising peace, transparency, brotherhood, honesty, and openness to all people.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* Slide 6: Colours */}
+                        <div style={{ flex: '0 0 100%', width: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
+                            <div className="bg-surface p-8 rounded-2xl border border-white/20 text-center" style={{ maxWidth: '600px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animation: 'slideInLeft 1s ease-out forwards', animationDelay: '1s' }}>
+                                <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '12px' }}>
+                                    <span style={{ width: '26px', height: '26px', borderRadius: '50%', background: '#ff0090', border: '2px solid #ffffff' }} title="Pink"></span>
+                                    <span style={{ width: '26px', height: '26px', borderRadius: '50%', background: '#ffffff', border: '2px solid #cbd5e0' }} title="White"></span>
+                                    <span style={{ width: '26px', height: '26px', borderRadius: '50%', background: '#00bfff', border: '2px solid #ffffff' }} title="Bold Skyblue"></span>
+                                </div>
+                                <span style={{ fontSize: '0.85rem', color: '#ffeb3b', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>6. Official Colours</span>
+                                <h3 style={{ fontSize: '1.6rem', color: '#ffffff', marginTop: '8px', marginBottom: '12px', fontWeight: 800 }}>
+                                  <span style={{ color: '#ff0090' }}>Pink</span>, <span style={{ color: '#ffffff' }}>White</span> &amp; <span style={{ color: '#00bfff' }}>Bold Skyblue</span>
+                                </h3>
+                                <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', flexWrap: 'wrap', marginTop: '12px' }}>
+                                    <span style={{ background: '#ff0090', color: '#ffffff', padding: '4px 12px', borderRadius: '12px', fontSize: '0.8rem', fontWeight: 700 }}>Pink</span>
+                                    <span style={{ background: '#ffffff', color: '#000000', padding: '4px 12px', borderRadius: '12px', fontSize: '0.8rem', fontWeight: 800 }}>White</span>
+                                    <span style={{ background: '#00bfff', color: '#000000', padding: '4px 12px', borderRadius: '12px', fontSize: '0.8rem', fontWeight: 800 }}>Bold Skyblue</span>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
-                    {/* 2. Symbol */}
-                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center slide-in-left" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animationDelay: '150ms' }}>
-                        <div style={{
-                            width: '56px',
-                            height: '56px',
+                    {/* Navigation controls */}
+                    <button 
+                        onClick={() => setActiveSlide((prev) => (prev - 1 + 6) % 6)}
+                        style={{
+                            position: 'absolute',
+                            left: '5px',
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                            background: 'rgba(0,0,0,0.5)',
+                            color: '#fff',
+                            border: '1px solid rgba(255,255,255,0.25)',
+                            width: '40px',
+                            height: '40px',
                             borderRadius: '50%',
-                            border: '3px solid #ff0090',
+                            cursor: 'pointer',
+                            fontSize: '1.2rem',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
-                            margin: '0 auto 10px',
-                            fontWeight: 900,
-                            fontSize: '1.1rem',
-                            color: '#ffffff',
-                            background: 'rgba(255,0,144,0.15)'
-                        }}>
-                            SDP
-                        </div>
-                        <span style={{ fontSize: '0.78rem', color: '#3bd8f7', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>2. Official Symbol</span>
-                        <h3 style={{ fontSize: '1.35rem', color: '#ffffff', marginTop: '6px', marginBottom: '8px', fontWeight: 800 }}>SDP (Inside a Circle)</h3>
-                        <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.85)', lineHeight: '1.6' }}>
-                          The acronym <strong>SDP</strong> enclosed inside a circular crest, representing unity, integrity, and collective power.
-                        </p>
-                    </div>
+                            zIndex: 10,
+                            transition: 'background 0.2s'
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,0,144,0.6)'}
+                        onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.5)'}
+                    >
+                        ⟨
+                    </button>
+                    <button 
+                        onClick={() => setActiveSlide((prev) => (prev + 1) % 6)}
+                        style={{
+                            position: 'absolute',
+                            right: '5px',
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                            background: 'rgba(0,0,0,0.5)',
+                            color: '#fff',
+                            border: '1px solid rgba(255,255,255,0.25)',
+                            width: '40px',
+                            height: '40px',
+                            borderRadius: '50%',
+                            cursor: 'pointer',
+                            fontSize: '1.2rem',
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            zIndex: 10,
+                            transition: 'background 0.2s'
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,0,144,0.6)'}
+                        onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.5)'}
+                    >
+                        ⟩
+                    </button>
 
-                    {/* 3. Slogan */}
-                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center slide-in-left" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animationDelay: '300ms' }}>
-                        <div style={{ fontSize: '2.5rem', marginBottom: '10px' }}>📢</div>
-                        <span style={{ fontSize: '0.78rem', color: '#ff69b4', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>3. Official Slogan</span>
-                        <h3 style={{ fontSize: '1.35rem', color: '#ff0090', marginTop: '6px', marginBottom: '8px', fontWeight: 900 }}>Change – Mageuzi</h3>
-                        <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.85)', lineHeight: '1.6' }}>
-                          The clarion call for structural transformation and progressive political renewal across Kenya.
-                        </p>
+                    {/* Pagination indicators */}
+                    <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '24px' }}>
+                        {[0, 1, 2, 3, 4, 5].map((index) => (
+                            <button
+                                key={index}
+                                onClick={() => setActiveSlide(index)}
+                                style={{
+                                    width: activeSlide === index ? '28px' : '8px',
+                                    height: '8px',
+                                    borderRadius: '4px',
+                                    background: activeSlide === index ? '#ff0090' : 'rgba(255,255,255,0.3)',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    transition: 'all 0.3s ease'
+                                }}
+                            />
+                        ))}
                     </div>
-
-                    {/* 4. Motto */}
-                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center slide-in-left" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animationDelay: '450ms' }}>
-                        <div style={{ fontSize: '2.5rem', marginBottom: '10px' }}>⏳</div>
-                        <span style={{ fontSize: '0.78rem', color: '#3cd070', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>4. Official Motto</span>
-                        <h3 style={{ fontSize: '1.35rem', color: '#3cd070', marginTop: '6px', marginBottom: '8px', fontWeight: 800 }}>Time Has Come – Wakati Umefika</h3>
-                        <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.85)', lineHeight: '1.6' }}>
-                          The moment for revolutionary democratic advancement and righteous citizen governance is now.
-                        </p>
-                    </div>
-
-                    {/* 5. Salute */}
-                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center slide-in-left" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animationDelay: '600ms' }}>
-                        <div style={{ fontSize: '2.5rem', marginBottom: '10px' }}>✋</div>
-                        <span style={{ fontSize: '0.78rem', color: '#3bd8f7', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>5. Official Salute</span>
-                        <h3 style={{ fontSize: '1.35rem', color: '#ffffff', marginTop: '6px', marginBottom: '8px', fontWeight: 800 }}>Open Hand and Palm Raised</h3>
-                        <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.85)', lineHeight: '1.6' }}>
-                          Raised open palm symbolising peace, transparency, brotherhood, honesty, and openness to all people.
-                        </p>
-                    </div>
-
-                    {/* 6. Colours */}
-                    <div className="bg-surface p-6 rounded-2xl border border-white/20 text-center slide-in-left" style={{ boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animationDelay: '750ms' }}>
-                        <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginBottom: '10px' }}>
-                            <span style={{ width: '22px', height: '22px', borderRadius: '50%', background: '#ff0090', border: '2px solid #ffffff' }} title="Pink"></span>
-                            <span style={{ width: '22px', height: '22px', borderRadius: '50%', background: '#ffffff', border: '2px solid #cbd5e0' }} title="White"></span>
-                            <span style={{ width: '22px', height: '22px', borderRadius: '50%', background: '#00bfff', border: '2px solid #ffffff' }} title="Bold Skyblue"></span>
-                        </div>
-                        <span style={{ fontSize: '0.78rem', color: '#ffeb3b', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>6. Official Colours</span>
-                        <h3 style={{ fontSize: '1.35rem', color: '#ffffff', marginTop: '6px', marginBottom: '8px', fontWeight: 800 }}>
-                          <span style={{ color: '#ff0090' }}>Pink</span>, <span style={{ color: '#ffffff' }}>White</span> &amp; <span style={{ color: '#00bfff' }}>Bold Skyblue</span>
-                        </h3>
-                        <div style={{ display: 'flex', justifyContent: 'center', gap: '6px', flexWrap: 'wrap', marginTop: '8px' }}>
-                            <span style={{ background: '#ff0090', color: '#ffffff', padding: '3px 10px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 700 }}>Pink</span>
-                            <span style={{ background: '#ffffff', color: '#000000', padding: '3px 10px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 800 }}>White</span>
-                            <span style={{ background: '#00bfff', color: '#000000', padding: '3px 10px', borderRadius: '12px', fontSize: '0.75rem', fontWeight: 800 }}>Bold Skyblue</span>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>
