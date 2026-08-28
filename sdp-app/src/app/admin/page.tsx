@@ -926,7 +926,7 @@ export default function AdminDashboard() {
                   </table>
                 </div>
             </div>
-          )}
+          ) : null}
 
         </div>
 
