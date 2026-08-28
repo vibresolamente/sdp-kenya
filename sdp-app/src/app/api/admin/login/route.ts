@@ -3,10 +3,10 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const { password } = await request.json();
-    const adminPassword = process.env.ADMIN_PASSWORD || 'SDPAdmin2026!';
+    const adminPassword = process.env.ADMIN_PASSWORD;
 
     if (password === adminPassword) {
-        console.log('Password matched admin credentials');
+
       const response = NextResponse.json({ success: true, message: 'Authentication successful' });
       // Set a simple session cookie (valid for 2 hours)
       response.cookies.set('sdp_admin_session', 'authenticated_token_2026', {

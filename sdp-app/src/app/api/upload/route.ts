@@ -1,22 +1,28 @@
 import { NextResponse } from 'next/server';
-import { promises as fs } from 'fs';
-import path from 'path';
+import { supabaseServer } from '@/lib/db';
 
 export async function POST(request: Request) {
   try {
     const form = await request.formData();
     const files: string[] = [];
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
-    await fs.mkdir(uploadDir, { recursive: true });
 
     // Iterate over all file entries in the form data and save them
     for (const [key, value] of form.entries()) {
       // Only process File objects (skip other fields)
       if (value instanceof File && value.size > 0) {
-        const filePath = path.join(uploadDir, value.name);
-        const buffer = Buffer.from(await value.arrayBuffer());
-        await fs.writeFile(filePath, buffer);
-        files.push(`/uploads/${encodeURIComponent(value.name)}`);
+        // Upload file to Supabase Storage bucket "pictures"
+        const fileBuffer = Buffer.from(await value.arrayBuffer());
+        const fileExt = value.name.split('.').pop();
+        const fileName = `${Date.now()}_${Math.random().toString(36).substring(2)}.${fileExt}`;
+        const { data: uploadData, error: uploadError } = await supabaseServer.storage
+          .from('pictures')
+          .upload(fileName, fileBuffer, {
+            contentType: value.type,
+          });
+        if (uploadError) throw uploadError;
+        // Construct public URL
+        const publicUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/pictures/${fileName}`;
+        files.push(publicUrl);
       }
     }
 
