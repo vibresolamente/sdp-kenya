@@ -171,12 +171,11 @@ export default function Home() {
                             borderRadius: '50%',
                             cursor: 'pointer',
                             fontSize: '1.2rem',
-                            display: 'flex',
+                            display: 'none', // Hide horizontal arrows since it's vertical now
                             alignItems: 'center',
                             justifyContent: 'center',
                             zIndex: 10,
-                            transition: 'background 0.2s',
-                            display: 'none' // Hide horizontal arrows since it's vertical now
+                            transition: 'background 0.2s'
                         }}
                         onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,0,144,0.6)'}
                         onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.5)'}
@@ -198,12 +197,11 @@ export default function Home() {
                             borderRadius: '50%',
                             cursor: 'pointer',
                             fontSize: '1.2rem',
-                            display: 'flex',
+                            display: 'none', // Hide horizontal arrows since it's vertical now
                             alignItems: 'center',
                             justifyContent: 'center',
                             zIndex: 10,
-                            transition: 'background 0.2s',
-                            display: 'none' // Hide horizontal arrows since it's vertical now
+                            transition: 'background 0.2s'
                         }}
                         onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,0,144,0.6)'}
                         onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.5)'}
