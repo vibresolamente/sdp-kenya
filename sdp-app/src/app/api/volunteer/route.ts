@@ -21,8 +21,6 @@ export async function POST(request: Request) {
       county:       county?.trim() || null,
       skills:       [role, skills].filter(Boolean).join(' | ') || null,
       availability: constituency?.trim() || null,
-      created_at:   new Date().toISOString(),
-      updated_at:   new Date().toISOString(),
     };
 
     const { data, error } = await supabaseServer
