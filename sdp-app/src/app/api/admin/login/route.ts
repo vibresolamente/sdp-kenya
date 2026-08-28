@@ -3,9 +3,17 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const { password } = await request.json();
-    const adminPassword = process.env.ADMIN_PASSWORD;
+    const adminPassword = process.env.ADMIN_PASSWORD || "SDPAdmin2026!";
+
+    // Debug: log the value of ADMIN_PASSWORD (will appear in Vercel logs)
+    console.log('DEBUG: ADMIN_PASSWORD =', adminPassword);
+    if (!adminPassword) {
+      // If the env var is missing, return a server error to make the problem obvious
+      return NextResponse.json({ error: 'Server misconfiguration: ADMIN_PASSWORD not set' }, { status: 500 });
+    }
 
     if (password === adminPassword) {
+
 
       const response = NextResponse.json({ success: true, message: 'Authentication successful' });
       // Set a simple session cookie (valid for 2 hours)

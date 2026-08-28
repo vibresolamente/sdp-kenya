@@ -58,7 +58,25 @@ export async function POST(request: Request) {
 
   try {
     const payload = await request.json();
-    const { table, data } = payload;
+    const { action, table, data } = payload;
+
+    // Handle clear actions
+    if (action) {
+      const tableMap: Record<string, string> = {
+        clear_members:    'members',
+        clear_contacts:   'contacts',
+        clear_volunteers: 'volunteers',
+      };
+      const targetTable = tableMap[action];
+      if (!targetTable) {
+        return NextResponse.json({ error: 'Unknown action' }, { status: 400 });
+      }
+      const { error } = await supabaseServer.from(targetTable).delete().neq('id', 0);
+      if (error) throw error;
+      return NextResponse.json({ success: true }, { status: 200 });
+    }
+
+    // Handle direct insert
     if (!table || !data) {
       return NextResponse.json({ error: 'Invalid payload' }, { status: 400 });
     }
@@ -70,6 +88,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
+
 export async function DELETE(request: Request) {
   const cookieStore = cookies();
   const session = cookieStore.get('sdp_admin_session');

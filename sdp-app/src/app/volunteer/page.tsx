@@ -5,11 +5,48 @@ import Link from 'next/link';
 
 export default function VolunteerPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setErrorMsg('');
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = {
+      name:         formData.get('name') as string,
+      email:        formData.get('email') as string,
+      phone:        formData.get('phone') as string,
+      county:       formData.get('county') as string,
+      constituency: formData.get('constituency') as string,
+      role:         formData.get('role') as string,
+      skills:       formData.get('skills') as string,
+    };
+
+    try {
+      const res = await fetch('/api/volunteer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+        form.reset();
+      } else {
+        const data = await res.json();
+        setErrorMsg(data.error || 'Submission failed. Please try again.');
+      }
+    } catch {
+      setErrorMsg('Network error. Please check your connection and try again.');
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   return (
     <>
@@ -76,8 +113,19 @@ export default function VolunteerPage() {
 
                     <textarea name="skills" placeholder="Tell us briefly about your skills and availability..." rows={4}></textarea>
 
-                    <button type="submit" className="cta-button" style={{ width: '100%', marginTop: '14px' }}>
-                      Submit Volunteer Registration
+                    {errorMsg && (
+                      <div style={{ background: 'rgba(255,235,59,0.15)', border: '1px solid rgba(255,235,59,0.4)', borderRadius: '8px', padding: '10px', marginBottom: '12px' }}>
+                        <p style={{ color: '#ffeb3b', fontSize: '0.9rem', margin: 0, fontWeight: 600 }}>⚠️ {errorMsg}</p>
+                      </div>
+                    )}
+
+                    <button
+                      type="submit"
+                      className="cta-button"
+                      style={{ width: '100%', marginTop: '14px', opacity: loading ? 0.7 : 1, cursor: loading ? 'not-allowed' : 'pointer' }}
+                      disabled={loading}
+                    >
+                      {loading ? '⏳ Submitting...' : '✅ Submit Volunteer Registration'}
                     </button>
                   </form>
                 </>
