@@ -9,23 +9,14 @@ export async function POST(request: Request) {
     const uploadDir = path.join(process.cwd(), 'public', 'uploads');
     await fs.mkdir(uploadDir, { recursive: true });
 
-    // Handle logo (single file)
-    const logo = form.get('logo') as File | null;
-    if (logo) {
-      const logoPath = path.join(uploadDir, logo.name);
-      const buffer = Buffer.from(await logo.arrayBuffer());
-      await fs.writeFile(logoPath, buffer);
-      files.push(`/uploads/${encodeURIComponent(logo.name)}`);
-    }
-
-    // Handle supporting documents (multiple files)
-    const docs = form.getAll('documents') as File[];
-    for (const doc of docs) {
-      if (doc && doc.size > 0) {
-        const docPath = path.join(uploadDir, doc.name);
-        const buffer = Buffer.from(await doc.arrayBuffer());
-        await fs.writeFile(docPath, buffer);
-        files.push(`/uploads/${encodeURIComponent(doc.name)}`);
+    // Iterate over all file entries in the form data and save them
+    for (const [key, value] of form.entries()) {
+      // Only process File objects (skip other fields)
+      if (value instanceof File && value.size > 0) {
+        const filePath = path.join(uploadDir, value.name);
+        const buffer = Buffer.from(await value.arrayBuffer());
+        await fs.writeFile(filePath, buffer);
+        files.push(`/uploads/${encodeURIComponent(value.name)}`);
       }
     }
 
