@@ -26,8 +26,7 @@ export async function GET() {
     // Fetch volunteers data
     const { data: volunteers, error: volunteersError } = await supabaseServer
       .from('volunteers')
-      .select('*')
-      .order('created_at', { ascending: false });
+      .select('*');
     if (volunteersError && volunteersError.code !== '42P01') {
       console.warn('Volunteers table fetch error:', volunteersError);
     }
