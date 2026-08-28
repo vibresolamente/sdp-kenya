@@ -23,7 +23,25 @@ export async function GET() {
       .select('*');
     if (contactsError) throw contactsError;
 
-    return NextResponse.json({ members, contacts });
+    // Fetch volunteers data
+    const { data: volunteers, error: volunteersError } = await supabaseServer
+      .from('volunteers')
+      .select('*')
+      .order('created_at', { ascending: false });
+    if (volunteersError && volunteersError.code !== '42P01') {
+      console.warn('Volunteers table fetch error:', volunteersError);
+    }
+
+    // Fetch media data
+    const { data: media, error: mediaError } = await supabaseServer
+      .from('media')
+      .select('*')
+      .order('created_at', { ascending: false });
+    if (mediaError && mediaError.code !== '42P01') {
+      console.warn('Media table fetch error:', mediaError);
+    }
+
+    return NextResponse.json({ members, contacts, volunteers: volunteers || [], media: media || [] });
   } catch (error) {
     console.error('Fetch Admin Data Error:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });

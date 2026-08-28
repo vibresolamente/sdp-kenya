@@ -118,6 +118,7 @@ export default function Header() {
                             <li><Link href="/join-us" className={isActive('/join-us')} onClick={closeNav}>{t('nav_join_us')}</Link></li>
                             <li><Link href="/membership" className={isActive('/membership')} onClick={closeNav}>{t('nav_membership')}</Link></li>
                             <li><Link href="/volunteer" className={isActive('/volunteer')} onClick={closeNav}>{t('nav_volunteer')}</Link></li>
+                            <li><Link href="/media" className={isActive('/media')} onClick={closeNav}>Media / Gallery</Link></li>
                         </ul>
                     </nav>
 

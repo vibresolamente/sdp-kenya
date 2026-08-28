@@ -36,8 +36,8 @@ export default function Pictures() {
             </figcaption>
           </figure>
           <figure className="text-center bg-surface p-4 rounded-xl border border-white/20">
-            <a href="/pictures/treasue.png" target="_blank">
-              <Image src="/pictures/treasue.png" alt="Ms Mary Wacuka Kinyua – National Treasurer and Founder" width={300} height={300} className="rounded-lg shadow-lg mx-auto object-cover" />
+            <a href="/pictures/Ms Mary Wacuka Kinyua.png" target="_blank">
+              <Image src="/pictures/Ms Mary Wacuka Kinyua.png" alt="Ms Mary Wacuka Kinyua – National Treasurer and Founder" width={300} height={300} className="rounded-lg shadow-lg mx-auto object-cover" />
             </a>
             <figcaption className="text-center mt-3 font-bold" style={{ color: '#ffffff', fontSize: '1.1rem' }}>
               <strong>Ms Mary Wacuka Kinyua</strong><br />

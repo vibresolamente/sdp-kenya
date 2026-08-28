@@ -22,6 +22,26 @@ interface Member {
   created_at: string;
 }
 
+interface Volunteer {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  skills: string;
+  availability: string;
+  county: string;
+  created_at: string;
+}
+
+interface MediaItem {
+  id: number;
+  title: string;
+  image_url: string;
+  description: string;
+  media_type: string;
+  created_at: string;
+}
+
 interface Contact {
   id: number;
   name: string;
@@ -39,7 +59,9 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(false);
   const [members, setMembers] = useState<Member[]>([]);
   const [contacts, setContacts] = useState<Contact[]>([]);
-  const [activeTab, setActiveTab] = useState<'members' | 'contacts' | 'add_member'>('members');
+  const [volunteers, setVolunteers] = useState<Volunteer[]>([]);
+  const [media, setMedia] = useState<MediaItem[]>([]);
+  const [activeTab, setActiveTab] = useState<'members' | 'contacts' | 'volunteers' | 'media' | 'add_member'>('members');
   
   // Search & Filter State
   const [searchTerm, setSearchTerm] = useState('');
@@ -89,6 +111,8 @@ export default function AdminDashboard() {
         const data = await response.json();
         setMembers(data.members || []);
         setContacts(data.contacts || []);
+        setVolunteers(data.volunteers || []);
+        setMedia(data.media || []);
         setIsAuthenticated(true);
       } else {
         setIsAuthenticated(false);
@@ -136,14 +160,16 @@ export default function AdminDashboard() {
       setIsAuthenticated(false);
       setMembers([]);
       setContacts([]);
+      setVolunteers([]);
+      setMedia([]);
     } catch (err) {
       console.error('Logout error:', err);
     }
   };
 
-  const handleDeleteSingle = async (table: 'members' | 'contacts', id: number, name: string) => {
+  const handleDeleteSingle = async (table: 'members' | 'contacts' | 'volunteers' | 'media', id: number, name: string) => {
     const confirmation = window.confirm(
-      `Are you sure you want to delete ${table === 'members' ? 'recruit' : 'inquiry'} "${name}"? This action cannot be undone.`
+      `Are you sure you want to delete this ${table === 'members' ? 'recruit' : table === 'contacts' ? 'inquiry' : table === 'volunteers' ? 'volunteer' : 'media item'} "${name}"? This action cannot be undone.`
     );
     if (!confirmation) return;
 
@@ -165,9 +191,9 @@ export default function AdminDashboard() {
     }
   };
 
-  const handleClearData = async (action: 'clear_members' | 'clear_contacts') => {
+  const handleClearData = async (action: 'clear_members' | 'clear_contacts' | 'clear_volunteers') => {
     const confirmation = window.confirm(
-      `WARNING: Are you absolutely sure you want to delete all stored ${action === 'clear_members' ? 'membership applications' : 'contact inquiries'}? This action CANNOT be undone.`
+      `WARNING: Are you absolutely sure you want to delete all stored ${action.replace('clear_', '')}? This action CANNOT be undone.`
     );
     if (!confirmation) return;
 
@@ -191,7 +217,7 @@ export default function AdminDashboard() {
   };
 
   // CSV Exporter
-  const exportToCSV = (type: 'members' | 'contacts') => {
+  const exportToCSV = (type: 'members' | 'contacts' | 'volunteers') => {
     if (type === 'members') {
       window.location.href = '/api/admin/report';
       return;
@@ -249,12 +275,22 @@ export default function AdminDashboard() {
     );
   });
 
+  const filteredVolunteers = volunteers.filter(v => {
+    return (
+      v.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      v.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      v.skills.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      v.county.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  });
+
   // Get list of unique counties for filter dropdown
   const counties = Array.from(new Set(members.map(m => m.county).filter(Boolean)));
 
   // Calculate statistics
   const totalMembers = members.length;
   const totalContacts = contacts.length;
+  const totalVolunteers = volunteers.length;
   const countiesRepresented = counties.length;
 
   if (isAuthenticated === null) {
@@ -370,6 +406,10 @@ export default function AdminDashboard() {
             <span className="stat-label">Active Inquiries</span>
           </div>
           <div className="pillar-card text-center">
+            <span className="stat-number">{totalVolunteers}</span>
+            <span className="stat-label">Volunteers</span>
+          </div>
+          <div className="pillar-card text-center">
             <span className="stat-number">{countiesRepresented}</span>
             <span className="stat-label">Counties Reached</span>
           </div>
@@ -460,6 +500,34 @@ export default function AdminDashboard() {
             Inquiries ({filteredContacts.length})
           </button>
           <button 
+            onClick={() => { setActiveTab('volunteers'); setSearchTerm(''); }}
+            style={{
+              padding: '10px 20px',
+              borderRadius: '8px',
+              fontWeight: 600,
+              background: activeTab === 'volunteers' ? 'rgba(255, 165, 0, 0.15)' : 'transparent',
+              color: activeTab === 'volunteers' ? '#ffa500' : 'var(--color-text-muted)',
+              border: 'none',
+              cursor: 'pointer'
+            }}
+          >
+            Volunteers ({filteredVolunteers.length})
+          </button>
+          <button 
+            onClick={() => { setActiveTab('media'); setSearchTerm(''); }}
+            style={{
+              padding: '10px 20px',
+              borderRadius: '8px',
+              fontWeight: 600,
+              background: activeTab === 'media' ? 'rgba(156, 39, 176, 0.15)' : 'transparent',
+              color: activeTab === 'media' ? '#9c27b0' : 'var(--color-text-muted)',
+              border: 'none',
+              cursor: 'pointer'
+            }}
+          >
+            Media Management
+          </button>
+          <button 
             onClick={() => { setActiveTab('add_member'); setSearchTerm(''); }}
             style={{
               padding: '10px 20px',
@@ -481,7 +549,7 @@ export default function AdminDashboard() {
           {/* Action Row */}
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px', alignItems: 'center', flexWrap: 'wrap', gap: '15px' }}>
             <h2 style={{ fontSize: '1.4rem', margin: 0 }}>
-              {activeTab === 'members' ? 'Party Membership Roster' : activeTab === 'contacts' ? 'Contact Inquiries Log' : 'Register New User'}
+              {activeTab === 'members' ? 'Party Membership Roster' : activeTab === 'contacts' ? 'Contact Inquiries Log' : activeTab === 'volunteers' ? 'Volunteer Roster' : activeTab === 'media' ? 'Media / Gallery Management' : 'Register New User'}
             </h2>
             <div style={{ display: 'flex', gap: '10px' }}>
               <button 
@@ -492,9 +560,9 @@ export default function AdminDashboard() {
                   fontSize: '0.9rem',
                   background: 'linear-gradient(135deg, var(--color-teal), #0099cc)',
                   boxShadow: 'none',
-                  display: activeTab === 'add_member' ? 'none' : 'block'
+                  display: (activeTab === 'add_member' || activeTab === 'media') ? 'none' : 'block'
                 }}
-                disabled={activeTab === 'members' ? filteredMembers.length === 0 : filteredContacts.length === 0}
+                disabled={activeTab === 'members' ? filteredMembers.length === 0 : activeTab === 'contacts' ? filteredContacts.length === 0 : filteredVolunteers.length === 0}
               >
                 📥 Export CSV
               </button>
@@ -516,14 +584,14 @@ export default function AdminDashboard() {
                 </a>
               )}
               <button 
-                onClick={() => handleClearData(activeTab === 'members' ? 'clear_members' : 'clear_contacts')}
+                onClick={() => handleClearData(activeTab === 'members' ? 'clear_members' : activeTab === 'volunteers' ? 'clear_volunteers' : 'clear_contacts')}
                 className="cta-button"
                 style={{
                   padding: '8px 16px',
                   fontSize: '0.9rem',
                   background: 'linear-gradient(135deg, #d9534f, #c9302c)',
                   boxShadow: 'none',
-                  display: activeTab === 'add_member' ? 'none' : 'block'
+                  display: (activeTab === 'add_member' || activeTab === 'media') ? 'none' : 'block'
                 }}
               >
                 🗑️ Clear All
@@ -650,7 +718,7 @@ export default function AdminDashboard() {
                 </tbody>
               </table>
             </div>
-          ) : (
+          ) : activeTab === 'contacts' ? (
             <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
@@ -704,6 +772,159 @@ export default function AdminDashboard() {
                   )}
                 </tbody>
               </table>
+            </div>
+          ) : activeTab === 'volunteers' ? (
+            <div style={{ overflowX: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <thead>
+                  <tr style={{ borderBottom: '2px solid #ffa500', textAlign: 'left' }}>
+                    <th style={{ padding: '12px' }}>Name</th>
+                    <th style={{ padding: '12px' }}>Contact</th>
+                    <th style={{ padding: '12px' }}>Skills & Availability</th>
+                    <th style={{ padding: '12px' }}>Location</th>
+                    <th style={{ padding: '12px' }}>Date</th>
+                    <th style={{ padding: '12px' }}>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredVolunteers.map((vol) => (
+                    <tr key={vol.id} style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
+                      <td style={{ padding: '12px', fontWeight: 600, color: 'var(--color-text-light)' }}>{vol.name}</td>
+                      <td style={{ padding: '12px', fontSize: '0.9rem' }}>
+                        <div><a href={`tel:${vol.phone}`} style={{ color: 'var(--color-teal)' }}>{vol.phone}</a></div>
+                        <div><a href={`mailto:${vol.email}`}>{vol.email}</a></div>
+                      </td>
+                      <td style={{ padding: '12px', fontSize: '0.9rem' }}>
+                        <div><strong>Skills:</strong> {vol.skills}</div>
+                        <div style={{ color: 'var(--color-text-muted)' }}><strong>Availability:</strong> {vol.availability}</div>
+                      </td>
+                      <td style={{ padding: '12px' }}>{vol.county}</td>
+                      <td style={{ padding: '12px', fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>
+                        {new Date(vol.created_at).toLocaleDateString()}
+                      </td>
+                      <td style={{ padding: '12px' }}>
+                        <button 
+                          onClick={() => handleDeleteSingle('volunteers', vol.id, vol.name)}
+                          style={{
+                            background: '#d9534f',
+                            color: '#ffffff',
+                            border: 'none',
+                            padding: '4px 8px',
+                            borderRadius: '4px',
+                            cursor: 'pointer',
+                            fontSize: '0.8rem',
+                            fontWeight: 'bold'
+                          }}
+                        >
+                          🗑️ Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                  {filteredVolunteers.length === 0 && (
+                    <tr>
+                      <td colSpan={6} style={{ padding: '40px', textAlign: 'center', color: 'var(--color-text-muted)' }}>
+                        No volunteers match search filters.
+                      </td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          ) : activeTab === 'media' ? (
+            <div>
+                <form className="contact-form mb-6" onSubmit={async (e) => {
+                  e.preventDefault();
+                  const formData = new FormData(e.currentTarget);
+                  const payload = Object.fromEntries(formData.entries());
+                  
+                  try {
+                    const res = await fetch('/api/admin/data', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ table: 'media', data: payload })
+                    });
+                    if (res.ok) {
+                      alert('Media added successfully!');
+                      (e.target as HTMLFormElement).reset();
+                      fetchData();
+                    } else {
+                      alert('Failed to add media');
+                    }
+                  } catch (err) {
+                    alert('Error adding media');
+                  }
+                }}>
+                    <h3 style={{fontSize: '1rem', marginBottom: '10px', color: '#9c27b0'}}>Add New Media / Merchandise</h3>
+                    <div className="flex flex-col md:flex-row gap-4">
+                        <input type="text" name="title" placeholder="Title / Name" required className="w-full md:w-1/2" />
+                        <select name="media_type" required className="w-full md:w-1/2">
+                            <option value="picture">Picture / Image</option>
+                            <option value="merchandise">Merchandise</option>
+                            <option value="advertisement">Advertisement</option>
+                        </select>
+                    </div>
+                    <input type="text" name="image_url" placeholder="Image URL (e.g. https://.../image.png or /images/my-pic.jpg)" required />
+                    <textarea name="description" placeholder="Description (Optional)" rows={3}></textarea>
+                    <button type="submit" className="cta-button" style={{ background: '#9c27b0', boxShadow: 'none' }}>+ Add Media Item</button>
+                </form>
+
+                <div style={{ overflowX: 'auto' }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                    <thead>
+                      <tr style={{ borderBottom: '2px solid #9c27b0', textAlign: 'left' }}>
+                        <th style={{ padding: '12px', width: '15%' }}>Preview</th>
+                        <th style={{ padding: '12px' }}>Title & Type</th>
+                        <th style={{ padding: '12px' }}>Description</th>
+                        <th style={{ padding: '12px' }}>Date Added</th>
+                        <th style={{ padding: '12px' }}>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {media.map((item) => (
+                        <tr key={item.id} style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
+                          <td style={{ padding: '12px' }}>
+                            <img src={item.image_url} alt={item.title} style={{ width: '60px', height: '60px', objectFit: 'cover', borderRadius: '4px' }} />
+                          </td>
+                          <td style={{ padding: '12px', fontWeight: 600, color: 'var(--color-text-light)' }}>
+                            <div>{item.title}</div>
+                            <div style={{ fontSize: '0.8rem', color: '#9c27b0', textTransform: 'uppercase' }}>{item.media_type}</div>
+                          </td>
+                          <td style={{ padding: '12px', fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>
+                            {item.description || '-'}
+                          </td>
+                          <td style={{ padding: '12px', fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>
+                            {new Date(item.created_at).toLocaleDateString()}
+                          </td>
+                          <td style={{ padding: '12px' }}>
+                            <button 
+                              onClick={() => handleDeleteSingle('media', item.id, item.title)}
+                              style={{
+                                background: '#d9534f',
+                                color: '#ffffff',
+                                border: 'none',
+                                padding: '4px 8px',
+                                borderRadius: '4px',
+                                cursor: 'pointer',
+                                fontSize: '0.8rem',
+                                fontWeight: 'bold'
+                              }}
+                            >
+                              🗑️ Delete
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
+                      {media.length === 0 && (
+                        <tr>
+                          <td colSpan={5} style={{ padding: '40px', textAlign: 'center', color: 'var(--color-text-muted)' }}>
+                            No media items found.
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
             </div>
           )}
 

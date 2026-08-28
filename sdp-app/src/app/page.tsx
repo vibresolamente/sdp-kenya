@@ -48,16 +48,18 @@ export default function Home() {
                     </p>
                 </div>
 
-                <div className="fade-in-up" style={{ position: 'relative', width: '100%', overflow: 'hidden', padding: '20px 0' }}>
+                <div className="fade-in-up" style={{ position: 'relative', width: '100%', height: '400px', overflow: 'hidden', padding: '20px 0' }}>
                     <div style={{
                         display: 'flex',
+                        flexDirection: 'column',
                         transition: 'transform 1000ms cubic-bezier(0.4, 0, 0.2, 1)',
-                        transform: `translateX(-${activeSlide * 100}%)`,
-                        width: '100%'
+                        transform: `translateY(-${activeSlide * 100}%)`,
+                        width: '100%',
+                        height: '100%'
                     }}>
                         
                         {/* Slide 1: Ideology */}
-                        <div style={{ flex: '0 0 100%', width: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
+                        <div style={{ flex: '0 0 100%', width: '100%', height: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
                             <div className="bg-surface p-8 rounded-2xl border border-white/20 text-center" style={{ maxWidth: '600px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animation: 'slideInLeft 1s ease-out forwards', animationDelay: '0s' }}>
                                 <div style={{ fontSize: '3rem', marginBottom: '12px' }}>⚖️</div>
                                 <span style={{ fontSize: '0.85rem', color: '#ffeb3b', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>1. Party Ideology</span>
@@ -69,7 +71,7 @@ export default function Home() {
                         </div>
 
                         {/* Slide 2: Symbol */}
-                        <div style={{ flex: '0 0 100%', width: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
+                        <div style={{ flex: '0 0 100%', width: '100%', height: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
                             <div className="bg-surface p-8 rounded-2xl border border-white/20 text-center" style={{ maxWidth: '600px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animation: 'slideInLeft 1s ease-out forwards', animationDelay: '0.2s' }}>
                                 <div style={{
                                     width: '72px',
@@ -96,7 +98,7 @@ export default function Home() {
                         </div>
 
                         {/* Slide 3: Slogan */}
-                        <div style={{ flex: '0 0 100%', width: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
+                        <div style={{ flex: '0 0 100%', width: '100%', height: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
                             <div className="bg-surface p-8 rounded-2xl border border-white/20 text-center" style={{ maxWidth: '600px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animation: 'slideInLeft 1s ease-out forwards', animationDelay: '0.4s' }}>
                                 <div style={{ fontSize: '3rem', marginBottom: '12px' }}>📢</div>
                                 <span style={{ fontSize: '0.85rem', color: '#ff69b4', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>3. Official Slogan</span>
@@ -108,7 +110,7 @@ export default function Home() {
                         </div>
 
                         {/* Slide 4: Motto */}
-                        <div style={{ flex: '0 0 100%', width: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
+                        <div style={{ flex: '0 0 100%', width: '100%', height: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
                             <div className="bg-surface p-8 rounded-2xl border border-white/20 text-center" style={{ maxWidth: '600px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animation: 'slideInLeft 1s ease-out forwards', animationDelay: '0.6s' }}>
                                 <div style={{ fontSize: '3rem', marginBottom: '12px' }}>⏳</div>
                                 <span style={{ fontSize: '0.85rem', color: '#3cd070', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>4. Official Motto</span>
@@ -120,7 +122,7 @@ export default function Home() {
                         </div>
 
                         {/* Slide 5: Salute */}
-                        <div style={{ flex: '0 0 100%', width: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
+                        <div style={{ flex: '0 0 100%', width: '100%', height: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
                             <div className="bg-surface p-8 rounded-2xl border border-white/20 text-center" style={{ maxWidth: '600px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animation: 'slideInLeft 1s ease-out forwards', animationDelay: '0.8s' }}>
                                 <div style={{ fontSize: '3rem', marginBottom: '12px' }}>✋</div>
                                 <span style={{ fontSize: '0.85rem', color: '#3bd8f7', fontWeight: 700, letterSpacing: '1.5px', textTransform: 'uppercase' }}>5. Official Salute</span>
@@ -132,7 +134,7 @@ export default function Home() {
                         </div>
 
                         {/* Slide 6: Colours */}
-                        <div style={{ flex: '0 0 100%', width: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
+                        <div style={{ flex: '0 0 100%', width: '100%', height: '100%', display: 'flex', justifyContent: 'center', padding: '0 15px' }}>
                             <div className="bg-surface p-8 rounded-2xl border border-white/20 text-center" style={{ maxWidth: '600px', width: '100%', boxShadow: '0 8px 24px rgba(0,0,0,0.3)', backdropFilter: 'blur(10px)', animation: 'slideInLeft 1s ease-out forwards', animationDelay: '1s' }}>
                                 <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '12px' }}>
                                     <span style={{ width: '26px', height: '26px', borderRadius: '50%', background: '#ff0090', border: '2px solid #ffffff' }} title="Pink"></span>
@@ -173,7 +175,8 @@ export default function Home() {
                             alignItems: 'center',
                             justifyContent: 'center',
                             zIndex: 10,
-                            transition: 'background 0.2s'
+                            transition: 'background 0.2s',
+                            display: 'none' // Hide horizontal arrows since it's vertical now
                         }}
                         onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,0,144,0.6)'}
                         onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.5)'}
@@ -199,7 +202,8 @@ export default function Home() {
                             alignItems: 'center',
                             justifyContent: 'center',
                             zIndex: 10,
-                            transition: 'background 0.2s'
+                            transition: 'background 0.2s',
+                            display: 'none' // Hide horizontal arrows since it's vertical now
                         }}
                         onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,0,144,0.6)'}
                         onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(0,0,0,0.5)'}

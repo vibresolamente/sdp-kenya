@@ -27,9 +27,9 @@ export default function LeadershipPage() {
     {
       name: "Ms Mary Wacuka Kinyua",
       designation: "National Treasurer and Founder (10.1.7)",
-      image: "/pictures/treasue.png",
-      phone: "0725382047",
-      email: "sdpkenya@gmail.com",
+      image: "/pictures/Ms Mary Wacuka Kinyua.png",
+      phone: "0723235669",
+      email: "marywacuka2020@gmail.com",
       roleDescription: "Custodian of party financial management, transparency, statutory audits, and member subscription registries."
     }
   ];
