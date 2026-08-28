@@ -21,7 +21,6 @@ export async function POST(request: Request) {
       county:       county?.trim() || null,
       skills:       [role, skills].filter(Boolean).join(' | ') || null,
       availability: constituency?.trim() || null,
-      status:       'active',
       created_at:   new Date().toISOString(),
       updated_at:   new Date().toISOString(),
     };
