@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS volunteers (
     notes        TEXT,
     date_of_birth DATE,
     address       TEXT,
-    status        VARCHAR(50)
+    status        VARCHAR(50),
     created_at    TIMESTAMPTZ DEFAULT NOW(),
     updated_at    TIMESTAMPTZ DEFAULT NOW()
 );
@@ -31,9 +31,7 @@ CREATE TRIGGER trg_volunteers_updated
 BEFORE UPDATE ON volunteers
 FOR EACH ROW EXECUTE FUNCTION set_volunteers_updated();
 
--- -------------------------------------------------
---  Table: pictures
--- -------------------------------------------------
+
 CREATE TABLE IF NOT EXISTS pictures (
     picture_id   BIGSERIAL PRIMARY KEY,
     title        VARCHAR(200) NOT NULL,               -- human‑readable title for the image
