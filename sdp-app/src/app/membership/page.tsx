@@ -318,6 +318,7 @@ export default function MembershipPage() {
                   placeholder="Enter your National ID or Email"
                   value={idNumber}
                   onChange={(e) => setIdNumber(e.target.value)}
+                  autoComplete="off"
                   required
                   style={inputStyle}
                 />
@@ -331,6 +332,7 @@ export default function MembershipPage() {
                     placeholder="Enter your password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    autoComplete="new-password"
                     required
                     style={{ ...inputStyle, paddingRight: '48px', marginBottom: 0 }}
                   />

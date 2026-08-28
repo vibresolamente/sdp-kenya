@@ -75,6 +75,7 @@ export default function MemberLogin() {
               value={identifier}
               onChange={(e) => setIdentifier(e.target.value)}
               placeholder="e.g. 12345678 or name@example.com" 
+              autoComplete="off"
               required 
               style={inputStyle}
             />
@@ -88,6 +89,7 @@ export default function MemberLogin() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your member password" 
+                autoComplete="new-password"
                 required 
                 style={{ ...inputStyle, paddingRight: '48px', marginBottom: 0 }}
               />
