@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import AdminUploadPage from './upload/page';
+
 
 interface Member {
   id: number;
@@ -612,20 +612,7 @@ export default function AdminDashboard() {
             Media
           </button>
 
-          <button
-            onClick={() => { setActiveTab('upload'); setSearchTerm(''); }}
-            style={{
-              padding: '10px 20px',
-              borderRadius: '8px',
-              fontWeight: 600,
-              background: activeTab === 'upload' ? 'rgba(0, 200, 83, 0.15)' : 'transparent',
-              color: activeTab === 'upload' ? '#00c853' : 'var(--color-text-muted)',
-              border: 'none',
-              cursor: 'pointer',
-            }}
-          >
-            📤 Upload Pictures
-          </button>
+          
 
           <button
             onClick={() => { setActiveTab('add_member'); setSearchTerm(''); }}
@@ -1120,8 +1107,7 @@ export default function AdminDashboard() {
             </div>
           )}
 
-          {/* ── UPLOAD PICTURES TAB ── */}
-          {activeTab === 'upload' && <AdminUploadPage />}
+
 
           {/* ── ADD MEMBER TAB ── */}
           {activeTab === 'add_member' && (
