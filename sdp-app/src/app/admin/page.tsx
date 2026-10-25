@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 
+
+
 interface Member {
   id: number;
   name: string;
