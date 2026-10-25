@@ -25,18 +25,12 @@ export async function POST(request: Request) {
         files.push(publicUrl);
         // Determine media type from MIME
         const mediaType = value.type.startsWith('video/') ? 'video' : value.type === 'application/pdf' ? 'newspaper' : 'image';
-        // Insert metadata into media table
-        const { error: insertError } = await supabaseServer.from('media').insert({
-          title: value.name,
-          image_url: publicUrl,
-          description: '',
-          media_type: mediaType,
-        });
-        if (insertError) throw insertError;
+        // Media type determined; insertion will be handled by admin form
+        // No database operation performed here
       }
     }
 
-    return NextResponse.json({ success: true, files }, { status: 200 });
+    return NextResponse.json({ url: files[0] }, { status: 200 });
   } catch (error) {
     console.error('Upload error:', error);
     return NextResponse.json({ success: false, error: (error as any).message }, { status: 500 });

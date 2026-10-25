@@ -980,7 +980,29 @@ export default function AdminDashboard() {
                 onSubmit={async (e) => {
                   e.preventDefault();
                   const formData = new FormData(e.currentTarget);
+                  // Extract file and upload to get URL
+                  const file = formData.get('file') as File;
+                  let imageUrl = '';
+                  if (file) {
+                    const uploadData = new FormData();
+                    uploadData.append('file', file);
+                    const uploadRes = await fetch('/api/upload', {
+                      method: 'POST',
+                      body: uploadData,
+                    });
+                    if (uploadRes.ok) {
+                      const uploadJson = await uploadRes.json();
+                      // Assuming the API returns { url: '...' }
+                      imageUrl = uploadJson.url || '';
+                    } else {
+                      alert('Failed to upload image');
+                      return;
+                    }
+                  }
+                  // Build payload without the raw file field
                   const payload = Object.fromEntries(formData.entries());
+                  delete payload.file; // remove file entry
+                  payload.image_url = imageUrl;
                   try {
                     const res = await fetch('/api/admin/data', {
                       method: 'POST',
@@ -1017,9 +1039,9 @@ export default function AdminDashboard() {
                   </select>
                 </div>
                 <input
-                  type="text"
-                  name="image_url"
-                  placeholder="Image URL (e.g. https://.../image.png or /images/my-pic.jpg)"
+                  type="file"
+                  name="file"
+                  accept="image/*"
                   required
                   style={{ width: '100%', marginBottom: '12px' }}
                 />
