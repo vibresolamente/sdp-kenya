@@ -23,6 +23,16 @@ export async function POST(request: Request) {
         // Construct public URL
         const publicUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/pictures/${fileName}`;
         files.push(publicUrl);
+        // Determine media type from MIME
+        const mediaType = value.type.startsWith('video/') ? 'video' : value.type === 'application/pdf' ? 'newspaper' : 'image';
+        // Insert metadata into media table
+        const { error: insertError } = await supabaseServer.from('media').insert({
+          title: value.name,
+          image_url: publicUrl,
+          description: '',
+          media_type: mediaType,
+        });
+        if (insertError) throw insertError;
       }
     }
 

@@ -64,7 +64,7 @@ export default function AdminUploadPage() {
           <input
             type="file"
             name="files"
-            accept=".png,.jpg,.jpeg,.webp,.svg"
+            accept=".png,.jpg,.jpeg,.webp,.svg,.mp4,.webm,.pdf"
             multiple
             required
             style={{
