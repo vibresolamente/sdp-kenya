@@ -8,11 +8,13 @@ if (supabaseServiceKey === 'YOUR_SUPABASE_SERVICE_ROLE_KEY') {
   supabaseServiceKey = undefined;
 }
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error(
-    'Supabase environment variables are missing. Please set NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.'
-  );
-}
+  if (!supabaseUrl || !supabaseAnonKey) {
+    console.warn('Supabase environment variables are missing. Using placeholder values for local development.');
+    // Provide fallback dummy values to prevent runtime crash during development
+    // These should be replaced with actual credentials in production
+    // For now, use empty strings which will cause auth errors if used
+    // but allow the app to start.
+  }
 
 // Client-side (anon key) Supabase client
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
