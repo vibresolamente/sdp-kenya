@@ -17,7 +17,7 @@ if (supabaseServiceKey === 'YOUR_SUPABASE_SERVICE_ROLE_KEY') {
   }
 
 // Client-side (anon key) Supabase client
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = createClient(supabaseUrl ?? '', supabaseAnonKey ?? '');
 
 // Server-side Supabase client — uses service role key if available, falls back to anon
 if (!supabaseServiceKey) {
@@ -27,8 +27,8 @@ if (!supabaseServiceKey) {
 }
 
 export const supabaseServer = createClient(
-  supabaseUrl,
-  supabaseServiceKey ?? supabaseAnonKey
+  supabaseUrl ?? '',
+  supabaseServiceKey ?? supabaseAnonKey ?? ''
 );
 
 /**
