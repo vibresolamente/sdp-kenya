@@ -1,39 +1,42 @@
 import { createClient } from '@supabase/supabase-js';
 
+// -----------------------------------------------------------------------------
+// Load Supabase configuration from environment variables.
+// These values are injected at build/deployment time and must be present.
+// -----------------------------------------------------------------------------
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 let supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-if (supabaseServiceKey === 'YOUR_SUPABASE_SERVICE_ROLE_KEY') {
-  supabaseServiceKey = undefined;
-}
-
-  if (!supabaseUrl || !supabaseAnonKey) {
-    console.warn('Supabase environment variables are missing. Using placeholder values for local development.');
-    // Provide fallback dummy values to prevent runtime crash during development
-    // These should be replaced with actual credentials in production
-    // For now, use empty strings which will cause auth errors if used
-    // but allow the app to start.
-  }
-
-// Client-side (anon key) Supabase client
-export const supabase = createClient(supabaseUrl ?? '', supabaseAnonKey ?? '');
-
-// Server-side Supabase client — uses service role key if available, falls back to anon
-if (!supabaseServiceKey) {
+// -----------------------------------------------------------------------------
+// Validate configuration – provide helpful warnings during development.
+// -----------------------------------------------------------------------------
+if (!supabaseUrl || !supabaseAnonKey) {
   console.warn(
-    'SUPABASE_SERVICE_ROLE_KEY is missing or invalid; admin routes will use the public anon client (limited permissions).'
+    '⚠️ Supabase URL or anon key is missing. The app will start with empty strings, but any request to Supabase will fail.'
   );
 }
 
+if (!supabaseServiceKey) {
+  console.error(
+    '⚠️ SUPABASE_SERVICE_ROLE_KEY is not set. Admin‑level writes (volunteers, deletions, media uploads) will be blocked.'
+  );
+}
+
+// -----------------------------------------------------------------------------
+// Public client – read‑only, used in the browser.
+// -----------------------------------------------------------------------------
+export const supabase = createClient(supabaseUrl ?? '', supabaseAnonKey ?? '');
+
+// -----------------------------------------------------------------------------
+// Server‑side client – prefers the service‑role key for full CRUD.
+// -----------------------------------------------------------------------------
 export const supabaseServer = createClient(
   supabaseUrl ?? '',
   supabaseServiceKey ?? supabaseAnonKey ?? ''
 );
 
-/**
- * Add a new member record to Supabase.
- */
+/** Add a new member record. */
 export async function addMember(member: any) {
   const { data, error } = await supabaseServer.from('members').insert(member).select();
   if (error) {
@@ -43,9 +46,7 @@ export async function addMember(member: any) {
   return data?.[0];
 }
 
-/**
- * Add a new contact inquiry to Supabase.
- */
+/** Add a new contact inquiry. */
 export async function addContact(contact: any) {
   const { data, error } = await supabaseServer.from('contacts').insert(contact).select();
   if (error) {

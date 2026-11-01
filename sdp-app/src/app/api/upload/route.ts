@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { supabaseServer } from '@/lib/db';
+import { Buffer } from 'node:buffer';
 
 export async function POST(request: Request) {
   try {
@@ -20,8 +21,9 @@ export async function POST(request: Request) {
             contentType: value.type,
           });
         if (uploadError) throw uploadError;
-        // Construct public URL
-        const publicUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/pictures/${fileName}`;
+        // Construct public URL using the returned storage path
+        if (!uploadData?.path) throw new Error('Upload succeeded but no path returned');
+        const publicUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/pictures/${uploadData.path}`;
         files.push(publicUrl);
         // Determine media type from MIME
         const mediaType = value.type.startsWith('video/') ? 'video' : value.type === 'application/pdf' ? 'newspaper' : 'image';
